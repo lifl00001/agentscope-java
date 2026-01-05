@@ -1,6 +1,6 @@
-# HookStopAgent Call Tree Analysis
+# HookStopAgentExample 的 Call Tree 和恢复机制分析
 
-## Main Method Call Tree
+## Call Tree
 
 ```
 main(String[] args)
@@ -26,89 +26,57 @@ main(String[] args)
 └── startChatWithConfirmation(agent)
     └── agent.call(String)
         └── ReActAgent.doCall()
-            ├── add user messages to memory
-            ├── check for pending tool calls
-            ├── executeIteration(0)
-                └── reasoning(0, false)
-                    ├── checkInterruptedAsync()
-                    ├── notifyPreReasoningEvent()
-                    ├── model.stream()
-                    ├── process chunks via ReasoningContext
-                    ├── notifyReasoningChunk()
-                    ├── notifyPostReasoning()
-                    ├── check stop requested (stopAgent called)
-                    ├── if stop requested: return message with ToolUseBlocks
-                    ├── else continue to acting phase
-                    └── acting(0)
-                        ├── extractRecentToolCalls()
-                        ├── notifyPreActingHooks()
-                        ├── executeToolCalls()
-                        └── notifyPostActingHook()
+            ├── 将用户消息添加到内存
+            ├── 检查待处理的工具调用
+            ├── 检查stopRequested
+            ├── 如果请求停止：返回包含 ToolUseBlocks 的消息
+            ├── 否则继续执行到 acting 阶段
+            └── acting(0)
+                ├── extractRecentToolCalls()
+                ├── notifyPreActingHooks()
+                ├── executeToolCalls()
+                └── notifyPostActingHook()
 ```
 
-## Hook Stop and Resume Analysis
+## Hook Stop 后的恢复机制分析
 
-### How HookStop Works
+### 停止方式
 
-The hook stop mechanism is implemented through the `stopAgent()` method in hook events:
+1. **Hook 中的 `stopAgent()` 调用**
+   - 在 [ToolConfirmationHook](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-examples/quickstart/src/main/java/io/agentscope/examples/quickstart/HookStopAgentExample.java#L147-L164) 的 [onEvent](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-examples/quickstart/src/main/java/io/agentscope/examples/quickstart/ExampleUtils.java#L23-L30) 方法中，当检测到敏感工具调用时，调用 [postReasoning.stopAgent()](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/hook/PostReasoningEvent.java#L98-L100)
+   - 停止发生在 [PostReasoningEvent](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/hook/PostReasoningEvent.java#L50-L171) 事件中，即推理完成后、工具执行前
 
-1. **PostReasoningEvent.stopAgent()**: When called in a PostReasoningEvent, the agent will stop before executing tools and return the message containing ToolUseBlocks.
-2. **Agent Detection**: The agent checks `event.isStopRequested()` and returns the pending tool use message instead of proceeding to tool execution.
-3. **State Preservation**: The agent preserves its state in memory and waits for further input.
+2. **停止的触发条件**
+   - 检测到敏感工具调用（[delete_file](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-examples/quickstart/src/main/java/io/agentscope/examples/quickstart/HookStopAgentExample.java#L167-L172)、[send_email](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-examples/quickstart/src/main/java/io/agentscope/examples/quickstart/HookStopAgentExample.java#L174-L181)）
+   - 通过检查 [Msg](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/message/Msg.java#L40-L162) 中的 [ToolUseBlock](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/message/ToolUseBlock.java#L35-L102) 类型内容块来判断
 
-### Types of Stops
+### 恢复方式
 
-1. **Tool Confirmation Stop**:
-   - Triggered by ToolConfirmationHook in PostReasoningEvent
-   - Occurs when sensitive tools (delete_file, send_email) are detected
-   - Calls `postReasoning.stopAgent()` to pause execution
-   - Returns message with ToolUseBlocks for user review
+1. **确认继续执行**
+   - 用户输入 "yes" 或 "y" 确认工具调用
+   - 调用 [agent.call()](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/agent/Agent.java#L77-L85) 无参数方法
+   - [ReActAgent](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L124-L1386) 检测到存在待处理的工具调用，直接进入 [acting](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L334-L390) 阶段执行工具
 
-2. **Structured Output Stop**:
-   - Triggered by StructuredOutputHook when structured output is requested
-   - Calls `postReasoning.stopAgent()` to pause execution
-   - Allows for type-safe output generation
+2. **取消执行**
+   - 用户输入 "no" 或 "n" 取消工具调用
+   - 通过 [createCancelledToolResults](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-examples/quickstart/src/main/java/io/agentscope/examples/quickstart/HookStopAgentExample.java#L125-L144) 方法创建取消的工具结果消息
+   - 调用 [agent.call(cancelResult)](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/agent/Agent.java#L77-L85) 将取消结果传递给代理
+   - 代理继续推理过程，但使用取消的工具结果
 
-3. **External Stop**:
-   - Triggered by external interruption (agent.interrupt())
-   - Stops execution at the next available interruption point
+3. **内部实现机制**
+   - [ReActAgent.doCall](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L206-L222) 方法首先检查是否存在待处理的工具调用
+   - 如果存在待处理工具调用，直接进入 [acting](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L334-L390) 阶段而非开始新的推理循环
+   - 这使得代理能够从停止点精确恢复执行
 
-### Resume Mechanisms
+### 关键类和方法
 
-1. **Resume with No Arguments** (`agent.call()`):
-   - Continues execution from where it was stopped
-   - Processes the pending tool calls that were identified during stop
-   - Uses `acting()` method to execute the tools
+1. **[PostReasoningEvent](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/hook/PostReasoningEvent.java#L50-L171)**
+   - [stopAgent()](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/hook/PostReasoningEvent.java#L98-L100) 方法：请求代理停止执行并返回包含工具调用的消息
+   - [isStopRequested()](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/hook/PostReasoningEvent.java#L106-L108) 方法：检查是否已请求停止
 
-2. **Resume with Tool Results** (`agent.call(toolResultMsg)`):
-   - Provides manual tool results to the agent
-   - Bypasses actual tool execution
-   - Agent continues with the provided results
+2. **[ReActAgent](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L124-L1386) 的恢复逻辑**
+   - [doCall](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L206-L222) 方法检查是否存在待处理的工具调用
+   - [acting](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L334-L390) 方法执行工具调用
+   - [hasPendingToolUse](file:///F:/workspace/springaialibaba/agentscope-java/agentscope-core/src/main/java/io/agentscope/core/ReActAgent.java#L224-L242) 方法检查是否有待处理的工具使用
 
-3. **Resume with New User Input** (`agent.call(userMsg)`):
-   - Processes new user input while preserving agent state
-   - Can override or supplement the previous execution flow
-
-### Implementation Details
-
-The ToolConfirmationHook implements the stop/resume logic by:
-
-1. Monitoring PostReasoningEvent for tool use blocks
-2. Checking if any tools are in the sensitive tools list (delete_file, send_email)
-3. Calling `postReasoning.stopAgent()` to request stop when sensitive tools detected
-4. The agent detects the stop request and returns the pending ToolUse message
-5. The main application detects pending tool calls using `hasPendingToolUse()`
-6. User is prompted for confirmation (yes/no)
-7. On "yes": Resume with `agent.call()` to execute tools
-8. On "no": Create cancelled tool results and call `agent.call(cancelResult)` to continue with error messages
-
-### Key Methods for Stop/Resume
-
-- `PostReasoningEvent.stopAgent()`: Requests the agent to stop before tool execution
-- `PostReasoningEvent.isStopRequested()`: Checks if stop was requested
-- `ReActAgent.doCall()`: Main entry point that handles both new calls and resume from stops
-- `ReActAgent.hasPendingToolUse()`: Detects if there are pending tool calls from a previous stop
-- `ReActAgent.acting()`: Executes tools when resuming from a stop
-- `ReActAgent.reasoning()`: Handles reasoning phase and stop detection
-
-This design enables a clean human-in-the-loop workflow where sensitive operations can be reviewed and confirmed before execution, while maintaining the agent's state and context.
+这种设计使得代理能够在关键决策点暂停执行，允许人类用户审查和确认敏感操作，然后再继续执行，实现了人机协作的智能代理系统。
