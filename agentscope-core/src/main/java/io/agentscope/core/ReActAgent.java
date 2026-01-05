@@ -342,6 +342,16 @@ public class ReActAgent extends StructuredOutputCapableAgent {
                             }
                         })
                 .then(Mono.defer(() -> Mono.justOrEmpty(context.buildFinalMessage())))
+                .onErrorResume(
+                        InterruptedException.class,
+                        error -> {
+                            // Save accumulated message before propagating interrupt
+                            Msg msg = context.buildFinalMessage();
+                            if (msg != null) {
+                                memory.addMessage(msg);
+                            }
+                            return Mono.error(error);
+                        })
                 .flatMap(this::notifyPostReasoning)
                 .flatMap(
                         event -> {
@@ -697,6 +707,15 @@ public class ReActAgent extends StructuredOutputCapableAgent {
         } else if (content instanceof ThinkingBlock) {
             accumulatedContent =
                     ThinkingBlock.builder().thinking(context.getAccumulatedThinking()).build();
+        } else if (content instanceof ToolUseBlock tub) {
+            // Support streaming ToolUseBlock events
+            ToolUseBlock accumulated = context.getAccumulatedToolCall(tub.getId());
+            if (accumulated != null) {
+                accumulatedContent = accumulated;
+            } else {
+                // If no accumulated data, use the current chunk directly
+                accumulatedContent = tub;
+            }
         }
 
         if (accumulatedContent != null) {
