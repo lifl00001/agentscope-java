@@ -30,9 +30,9 @@ public class DifyRAGExample {
 
     public static void main(String[] args) throws Exception {
         // Check environment variables
-        String difyApiKey = System.getenv("DIFY_RAG_API_KEY");
-        String difyBaseUrl = System.getenv("DIFY_API_BASE_URL");
-        String datasetId = System.getenv("DIFY_DATASET_ID");
+        String difyApiKey = "dataset-XQkWpRwqI06e4h5mN0eDUHgB";
+        String difyBaseUrl = "http://117.72.68.96/v1";
+        String datasetId = "dd263f99-eab2-4eae-ba57-69f2467436e4";
         String apiKey = ExampleUtils.getDashScopeApiKey();
 
         if (difyApiKey == null || difyBaseUrl == null || datasetId == null) {
@@ -64,15 +64,8 @@ public class DifyRAGExample {
                         .ragMode(RAGMode.AGENTIC)
                         .build();
 
-        UserAgent userAgent = UserAgent.builder().name("User").build();
 
-        Msg msg = null;
-        while (true) {
-            msg = userAgent.call(msg).block();
-            if (msg.getTextContent().equals("exit")) {
-                break;
-            }
-            msg = agent.call(msg).block();
-        }
+        Msg msg = agent.call(Msg.builder().textContent("检索机器人知识库").build()).block();
+        System.out.println(msg.getTextContent());
     }
 }
