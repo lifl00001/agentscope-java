@@ -1,0 +1,1695 @@
+
+ * ▐▛███▜▌ *   Claude Code v2.0.76
+* ▝▜█████▛▘ *  Sonnet 4.5 · API Usage Billing
+ *  ▘▘ ▝▝  *   D:\StuWorkSpace\springaialibaba\agentscope-java
+
+  /model to try Opus 4.5
+  ↑ Install the PyCharm plugin from the JetBrains Marketplace:
+    https://docs.claude.com/s/claude-code-jetbrains
+
+> /ide 
+  ⎿  IDE selection cancelled
+
+> @..\..\..\mnt\d\StuWorkSpace\springaialibaba\agentscope-java\agentscope-ex
+amples\quickstart\src\main\java\io\agentscope\examples\quickstart\PlanNotebo
+okExample.java#L146-229 说说plannotebook实现什么功能，解决什么问题 
+
+● 我来帮你了解 PlanNotebook 的功能。让我先查看完整的代码实现。
+
+● Read(agentscope-examples\quickstart\src\main\java\io\agentscope\examples\quick
+      start\PlanNotebookExample.java)
+  ⎿  Read 231 lines
+
+● Search(pattern: "class PlanNotebook", type: "java")
+  ⎿  Found 7 files (ctrl+o to expand)
+
+● Read(agentscope-core\src\main\java\io\agentscope\core\plan\PlanNotebook.java)
+  ⎿  Read 1026 lines
+
+● PlanNotebook 功能与问题分析
+
+  核心功能
+
+  PlanNotebook 是一个结构化计划管理系统，为 Agent 提供了规划和跟踪复杂任务的能力。主要功能包括：
+
+  1. 计划生命周期管理
+
+  提供 10 个工具函数（agentscope-core/.../plan/PlanNotebook.java:88-101）：
+  - create_plan - 创建新计划
+  - update_plan_info - 更新计划名称、描述、预期结果
+  - revise_current_plan - 增删改子任务
+  - update_subtask_state - 更新子任务状态
+  - finish_subtask - 完成子任务
+  - view_subtasks - 查看子任务详情
+  - get_subtask_count - 获取子任务统计
+  - finish_plan - 完成或放弃计划
+  - view_historical_plans - 查看历史计划
+  - recover_historical_plan - 恢复历史计划
+
+  2. 状态跟踪
+
+  - 计划状态: TODO → IN_PROGRESS → DONE/ABANDONED
+  - 子任务状态: TODO → IN_PROGRESS → DONE/ABANDONED
+  - 顺序执行约束: 必须按顺序完成子任务，前一个未完成不能开始下一个 (agentscope-core/.../plan/PlanNotebook.java:601-626)
+
+  3. 智能提示注入
+
+  - 在每次推理前自动注入 <system-hint> 标签包裹的上下文提示 (agentscope-core/.../plan/PlanNotebook.java:44-47)
+  - 引导 Agent 按计划执行任务
+  - 可配置是否需要用户确认 (agentscope-core/.../plan/PlanNotebook.java:220-230)
+
+  解决的问题
+
+  1. 复杂任务分解问题
+
+  问题: LLM 面对多步骤任务时容易迷失方向、遗漏步骤、执行顺序混乱
+
+  解决方案:
+  - 强制 Agent 先创建结构化计划
+  - 将大任务分解为可管理的子任务
+  - 每个子任务有明确的名称、描述和预期结果
+
+  2. 执行状态追踪问题
+
+  问题: 无法追踪 Agent 执行到哪一步，是否偏离目标
+
+  解决方案:
+  - 实时记录每个子任务的状态
+  - 通过 Hook 可视化计划状态（如 PlanNotebookExample.java:117-143 的 printPlanState）
+  - 支持状态持久化，可恢复历史计划
+
+  3. 任务连贯性问题
+
+  问题: Agent 在多轮对话中忘记上下文和目标
+
+  解决方案:
+  - 每次推理前自动注入当前计划上下文作为提示
+  - 保持 Agent 对整体目标和当前步骤的认知
+  - StateModule 接口支持会话级别的状态保存 (agentscope-core/.../plan/PlanNotebook.java:156-174)
+
+  实际使用示例
+
+  从 PlanNotebookExample.java 可以看到典型使用流程：
+
+  1. Agent 收到任务："计算矩形面积并保存到文件"
+  2. 调用 create_plan 创建 3 个子任务：
+     - [0] 计算矩形面积
+     - [1] 保存结果到文件
+     - [2] 读取文件验证
+  3. 系统自动注入提示："当前正在进行子任务 0..."
+  4. Agent 完成子任务 0 → 调用 finish_subtask
+  5. 系统自动激活子任务 1，更新提示
+  6. 重复直到所有子任务完成
+  7. 调用 finish_plan 完成整个计划
+
+  关键设计优势
+
+  1. 非阻塞式: 基于 Reactor 的响应式编程，所有操作返回 Mono
+  2. 可扩展: 支持自定义 PlanToHint、PlanStorage、状态持久化
+  3. 自动化: Hook 机制自动注入提示，无需手动干预
+  4. 可视化: 支持监听计划变化（changeHooks），便于调试和监控
+
+> /rename 
+  ⎿  Please provide a name for the session. Usage: /rename <name>
+
+> /rename plannotebook使用 
+  ⎿  Session renamed to: plannotebook使用
+
+> 当前项目的plannotebook和MultipleAgents智能体在技术实现和实际应用场景区别是
+什么，并举例说明 
+  ⎿ ⧉ Selected 1 lines from 
+    ..\..\..\mnt\d\StuWorkSpace\springaialibaba\agentscope-java\agentscope-core\
+    src\test\java\io\agentscope\core\pipeline\SequentialPipelineTest.java in 
+    IntelliJ IDEA
+
+● 我来帮你分析 PlanNotebook 和 MultipleAgents 在技术实现和应用场景上的区别。让我先查看相关的代码实现。
+
+● Search(pattern: "MultipleAgents", type: "java")
+  ⎿  Found 3 files (ctrl+o to expand)
+
+● Read(agentscope-core\src\test\java\io\agentscope\core\pipeline\SequentialPipel
+      ineTest.java)
+  ⎿  Read 186 lines
+
+● Search(pattern: "class.*Pipeline", type: "java")
+  ⎿  Found 11 files (ctrl+o to expand)
+
+● Read(agentscope-examples\quickstart\src\main\java\io\agentscope\examples\quick
+      start\SequentialPipelineExample.java)
+  ⎿  Read 195 lines
+
+● Read(agentscope-examples\quickstart\src\main\java\io\agentscope\examples\quick
+      start\FanoutPipelineExample.java)
+  ⎿  Read 288 lines
+
+● Search(pattern: "FanoutPipeline", type: "java")
+  ⎿  Found 8 files (ctrl+o to expand)
+
+● Read(agentscope-core\src\main\java\io\agentscope\core\pipeline\SequentialPipel
+      ine.java)
+  ⎿  Read 100 lines
+
+● PlanNotebook vs MultipleAgents（多智能体）对比分析
+
+  基于代码分析，我来详细说明这两个概念的本质区别：
+
+  ---
+  📊 核心区别总览
+
+  | 维度     | PlanNotebook            | MultipleAgents (Pipeline) |
+  |----------|-------------------------|---------------------------|
+  | 架构模式 | 单智能体 + 内部任务规划 | 多智能体 + 协作编排       |
+  | 执行主体 | 1 个 Agent 按步骤执行   | N 个独立 Agent 各司其职   |
+  | 任务分解 | Agent 自主分解为子任务  | 系统预定义角色分工        |
+  | 协作方式 | Hook 注入提示引导       | Pipeline 编排数据流       |
+  | 适用场景 | 复杂单任务多步骤执行    | 专业化任务流式处理        |
+
+  ---
+  🎯 技术实现差异
+
+  1. PlanNotebook：单智能体内部规划
+
+  核心机制 (agentscope-core/.../plan/PlanNotebook.java:103):
+  public class PlanNotebook implements StateModule {
+      private Plan currentPlan;  // 当前计划状态
+
+      // 10 个工具函数让 LLM 调用
+      @Tool public Mono<String> createPlan(...) { }
+      @Tool public Mono<String> finishSubtask(...) { }
+      // ...
+
+      // 关键：自动注入提示
+      public Mono<Msg> getCurrentHint() {
+          // 在每次推理前注入 <system-hint> 标签
+      }
+  }
+
+  工作流程:
+  用户任务 → Agent (带 PlanNotebook)
+           ↓
+      [自动] 推理前注入提示："当前正在执行子任务 0..."
+           ↓
+      Agent 调用 create_plan 工具创建计划
+           ↓
+      Hook 自动提示："现在开始执行子任务 0"
+           ↓
+      Agent 使用其他工具完成子任务
+           ↓
+      Agent 调用 finish_subtask
+           ↓
+      Hook 自动激活子任务 1，更新提示
+           ↓
+      循环直到所有子任务完成
+
+  关键代码示例 (PlanNotebookExample.java:173-195):
+  ReActAgent agent = ReActAgent.builder()
+      .name("PlanAgent")
+      .sysPrompt("创建计划后按步骤执行...")
+      .planNotebook(planNotebook)  // 注入 PlanNotebook
+      .hooks(List.of(planVisualizationHook))
+      .build();
+
+  ---
+  2. MultipleAgents：多智能体 Pipeline 编排
+
+  核心机制 (agentscope-core/.../pipeline/SequentialPipeline.java:24-38):
+  public class SequentialPipeline implements Pipeline<Msg> {
+      private final List<AgentBase> agents;  // 多个独立 Agent
+
+      public Mono<Msg> execute(Msg input) {
+          Mono<Msg> chain = Mono.just(input);
+          // 依次执行：Agent1 输出 → Agent2 输入
+          for (AgentBase agent : agents) {
+              chain = chain.flatMap(agent::call);
+          }
+          return chain;
+      }
+  }
+
+  工作流程:
+  输入数据 → Translator Agent (翻译)
+           ↓ [输出: 中文文本]
+        Summarizer Agent (摘要)
+           ↓ [输出: 摘要文本]
+     SentimentAnalyzer Agent (情感分析)
+           ↓ [输出: 情感分析结果]
+           最终输出
+
+  关键代码示例 (SequentialPipelineExample.java:68-73):
+  SequentialPipeline pipeline = SequentialPipeline.builder()
+      .addAgent(translator)      // Agent 1: 专门翻译
+      .addAgent(summarizer)      // Agent 2: 专门摘要
+      .addAgent(sentimentAnalyzer) // Agent 3: 专门分析
+      .build();
+
+  Msg result = pipeline.execute(inputMsg).block();
+
+  ---
+  📖 应用场景对比
+
+  PlanNotebook 适用场景
+
+  场景 1：复杂数学计算 + 文件操作
+
+  任务：计算矩形面积 → 保存文件 → 读取验证
+
+  // 单个 Agent 自主规划执行
+  Agent 收到任务
+    ↓
+  自主调用 create_plan([
+      {name: "计算面积", expected_outcome: "50"},
+      {name: "保存文件", expected_outcome: "result.txt 已保存"},
+      {name: "验证结果", expected_outcome: "读取内容匹配"}
+  ])
+    ↓
+  使用 calculate 工具计算
+    ↓
+  调用 finish_subtask(0, "50")
+    ↓
+  系统自动提示："开始子任务 1：保存文件"
+    ↓
+  使用 write_file 工具
+    ↓
+  调用 finish_subtask(1, "result.txt 已保存")
+    ↓
+  继续下一个子任务...
+
+  优势:
+  - ✅ 单个 Agent 处理全流程
+  - ✅ 灵活调整计划（可增删改子任务）
+  - ✅ 适合探索性任务（Agent 自主决策）
+
+  ---
+  MultipleAgents 适用场景
+
+  场景 2：内容处理流水线
+
+  任务：文章翻译 → 摘要生成 → 情感分析
+
+  // 预定义的流水线处理
+  Translator Agent (只负责翻译)
+    ↓ 输出中文文本
+  Summarizer Agent (只负责摘要)
+    ↓ 输出 2-3 句摘要
+  SentimentAnalyzer Agent (只负责分析)
+    ↓ 输出情感分类
+
+  优势:
+  - ✅ 每个 Agent 专注单一职责
+  - ✅ 可复用 Agent（如 Translator 可用于其他流程）
+  - ✅ 可并行执行（FanoutPipeline）
+  - ✅ 易于测试和维护
+
+  场景 3：多专家并行评审
+
+  任务：产品创意多维度评估
+
+  // FanoutPipeline 并行执行
+  产品创意
+    ├─→ Technical Expert (技术可行性)
+    ├─→ UX Expert (用户体验)
+    └─→ Business Analyst (商业价值)
+    ↓
+  聚合所有专家意见
+
+  ---
+  🔑 关键技术差异总结
+
+  PlanNotebook 特性
+
+  1. 提示工程驱动: 通过 <system-hint> 动态引导 LLM
+  2. 状态机管理: 子任务状态严格受控（TODO → IN_PROGRESS → DONE）
+  3. 顺序约束: 必须完成前一个才能开始下一个
+  4. 单 LLM 实例: 只需一个 LLM 调用，成本较低
+
+  MultipleAgents 特性
+
+  1. 流式编排: 通过 Pipeline 模式编排多个 Agent
+  2. 专业化分工: 每个 Agent 有特定 System Prompt 和工具集
+  3. 并行能力: FanoutPipeline 支持并发执行，提升效率
+  4. 多 LLM 调用: N 个 Agent 需要 N 次 LLM 调用，成本较高
+
+  ---
+  💡 实际选择建议
+
+  使用 PlanNotebook 当：
+
+  - ✅ 任务复杂但可由一个通用 Agent 完成
+  - ✅ 需要灵活调整执行步骤
+  - ✅ 任务步骤有强依赖关系（顺序执行）
+  - ✅ 希望降低 API 调用成本
+
+  示例: 数据分析报告生成（收集数据 → 分析 → 生成报告 → 保存）
+
+  使用 MultipleAgents 当：
+
+  - ✅ 任务需要不同领域的专业知识
+  - ✅ 可并行处理独立子任务
+  - ✅ 需要复用已有的 Agent 组件
+  - ✅ 每个步骤需要不同的工具集
+
+  示例: 多语言文档处理流程（OCR → 翻译 → 校对 → 格式化）
+
+  ---
+  🔄 混合使用场景
+
+  两者也可以结合使用：
+
+  // 场景：自动化研究项目
+  ResearchAgent (带 PlanNotebook)
+    ↓ 子任务 0: 使用 WebSearch 工具搜集资料
+    ↓ 子任务 1: 调用 SequentialPipeline
+             ├─ SummarizerAgent (资料摘要)
+             └─ TranslatorAgent (翻译中文)
+    ↓ 子任务 2: 生成报告并保存
+
+  PlanNotebook 负责整体规划，Pipeline 负责具体环节的专业化处理。
+
+  ---
+  希望这个对比能帮助你理解两者的区别和应用场景！
+
+> 那请问如claude 
+code这样的工具是通过plannotebook架构还是，多智能体架构实现的 
+
+● 基于对 AgentScope 框架的理解和对 Claude Code 行为的观察，我可以分析一下可能的实现架构。
+
+  🔍 Claude Code 的架构特征分析
+
+  从使用体验来看，Claude Code 更接近 PlanNotebook（单智能体 + 工具）架构，而不是多智能体 Pipeline。
+
+  关键证据
+
+  1. 统一的对话界面
+
+  用户: "帮我写一个用户认证功能"
+
+  Claude: 我需要：
+  1. 先查看现有代码结构
+  2. 创建用户模型
+  3. 实现认证控制器
+  4. 添加测试
+
+  让我先查看项目结构...
+
+  特征：
+  - ✅ 单一对话入口，用户不需要指定"请规划Agent"、"请编码Agent"
+  - ✅ Agent 自主决定执行步骤
+  - ✅ 符合 PlanNotebook 的自主规划特性
+
+  2. 丰富的工具调用
+
+  从 Claude Code 的能力来看：
+  @Tool(name = "read_file")
+  public Mono<String> readFile(String path) { }
+
+  @Tool(name = "write_file")
+  public Mono<String> writeFile(String path, String content) { }
+
+  @Tool(name = "execute_command")
+  public Mono<String> executeCommand(String command) { }
+
+  @Tool(name = "run_tests")
+  public Mono<String> runTests() { }
+
+  @Tool(name = "search_code")
+  public Mono<String> searchCode(String pattern) { }
+
+  特征：
+  - ✅ 一个 Agent 配备多个专业工具
+  - ✅ 通过工具调用来完成不同任务
+  - ✅ 符合 PlanNotebook 的工具驱动特性
+
+  3. 任务状态跟踪
+
+  Claude Code 能够：
+  ✓ 已完成：查看项目结构
+  ✓ 已完成：创建 User 模型
+  → 进行中：实现 AuthController
+  ○ 待完成：添加单元测试
+
+  特征：
+  - ✅ 内部维护任务状态
+  - ✅ 能够追踪进度
+  - ✅ 符合 PlanNotebook 的状态管理特性
+
+  ---
+  🏗️ Claude Code 的可能架构
+
+  推测的实现方式
+
+  // 类似这样的架构
+  ReActAgent claudeCodeAgent = ReActAgent.builder()
+      .name("ClaudeCode")
+      .sysPrompt(
+          "You are a coding assistant. " +
+          "For complex tasks: " +
+          "1. Create a plan with create_plan tool " +
+          "2. Execute step by step " +
+          "3. Use tools to read/write files, run commands..."
+      )
+      .model(ClaudeChatModel.builder()
+          .apiKey(System.getenv("ANTHROPIC_API_KEY"))
+          .modelName("claude-sonnet-4-5-20251101")
+          .build())
+      .planNotebook(PlanNotebook.builder()
+          .maxSubtasks(20)
+          .needUserConfirm(false)  // 某些情况下自动执行
+          .build())
+      .toolkit(toolkit)
+      .memory(LongTermMemory.builder()  // 支持长对话记忆
+          .embeddingsModel(embeddingsModel)
+          .build())
+      .hooks(List.of(
+          new FileOperationHook(),      // 文件操作监控
+          new CommandExecutionHook(),   // 命令执行监控
+          new SafetyCheckHook()         // 安全检查
+      ))
+      .maxIters(50)
+      .build();
+
+  ---
+  🤔 为什么不是多智能体架构？
+
+  多智能体架构的典型特征
+
+  如果是多智能体架构，用户体验应该是这样的：
+
+  ❌ 假设是多智能体：
+  用户: "帮我实现用户认证"
+
+  系统: 请选择要执行的 Agent：
+    [1] PlanningAgent - 任务规划
+    [2] CodeGenAgent - 代码生成
+    [3] TestAgent - 测试编写
+    [4] ReviewAgent - 代码审查
+
+  用户: [1] 然后按顺序执行...
+
+  PlanningAgent: 我创建了如下计划...
+
+  CodeGenAgent: 正在编写代码...
+
+  TestAgent: 正在编写测试...
+
+  但这不符合 Claude Code 的实际体验！
+
+  ---
+  📊 架构对比
+
+  | 特性     | Claude Code (实际) | PlanNotebook 架构   | MultipleAgents 架构    |
+  |----------|--------------------|---------------------|------------------------|
+  | 对话入口 | 单一对话界面       | ✅ 单 Agent         | ❌ 需要选择 Agent      |
+  | 任务规划 | Agent 自主规划     | ✅ create_plan 工具 | ❌ 预定义流程          |
+  | 工具使用 | 统一工具集         | ✅ Toolkit          | ❌ 每个 Agent 独立工具 |
+  | 灵活性   | 动态调整步骤       | ✅ revise_plan      | ❌ 固定 Pipeline       |
+  | 并行能力 | 偶尔并行搜索       | ⚠️ 有限支持         | ✅ FanoutPipeline      |
+  | 状态追踪 | 自动追踪进度       | ✅ SubTask 状态     | ❌ 无显式状态          |
+  | 记忆能力 | 长对话记忆         | ✅ Memory 模块      | ⚠️ 每个 Agent 独立     |
+
+  结论：Claude Code ≈ PlanNotebook 架构
+
+  ---
+  🚀 Claude Code 可能的高级特性
+
+  虽然是 PlanNotebook 架构，但可能结合了 Pipeline 的思想：
+
+  混合架构示例
+
+  // 场景：用户请求 "重构代码库并添加测试"
+
+  // 主 Agent 使用 PlanNotebook 进行整体规划
+  claudeCodeAgent.call("重构代码库并添加测试")
+      .flatMap(plan -> {
+          // 创建计划
+          // [0] 分析代码结构
+          // [1] 识别重构机会
+          // [2] 执行重构 (内部调用 SequentialPipeline)
+          // [3] 生成测试
+      })
+
+  子任务 2 可能内部使用 Pipeline：
+  // 在执行重构时，可能临时创建 Pipeline
+  SequentialPipeline refactorPipeline = SequentialPipeline.builder()
+      .addAgent(codeAnalysisAgent)      // 分析代码
+      .addAgent(refactorDesignAgent)     // 设计重构方案
+      .addAgent(codeGenerationAgent)     // 生成重构代码
+      .addAgent(codeReviewAgent)         // 代码审查
+      .build();
+
+  但这对用户是透明的，用户感知到的仍然是一个统一的 Agent。
+
+  ---
+  💡 实际实现考虑
+
+  Claude Code 可能的技术选型
+
+  1. 为什么选 PlanNotebook？
+    - ✅ 用户体验更好：自然对话，无需学习
+    - ✅ 更灵活：可以应对各种意外情况
+    - ✅ 成本更低：单 LLM 调用，不需要多个专业化 Agent
+    - ✅ 调试更容易：单一执行流程
+  2. 可能的增强
+    - 工具分组：不同任务激活不同工具组（类似 ToolGroup）
+    - 上下文管理：使用长记忆模块保存项目上下文
+    - 安全机制：Hook 层面做危险操作确认
+    - 流式输出：实时显示执行进度
+
+  ---
+  🎯 类似工具的架构
+
+  | 工具                     | 推测架构                | 理由                         |
+  |--------------------------|-------------------------|------------------------------|
+  | Claude Code              | PlanNotebook            | 单一对话界面，自主规划       |
+  | GitHub Copilot Workspace | PlanNotebook + Pipeline | 任务规划 + 代码审查 Pipeline |
+  | Cursor AI                | PlanNotebook            | 类似 Claude Code             |
+  | Devin (Cognition)        | PlanNotebook + 微调     | 自主 Agent + 专项优化        |
+  | AutoGPT                  | PlanNotebook            | 典型的自主规划 Agent         |
+
+  ---
+  🔧 如果用 AgentScope 实现 Claude Code
+
+  public class ClaudeCodeClone {
+      public static void main(String[] args) {
+          // 注册所有工具
+          Toolkit toolkit = new Toolkit();
+          toolkit.registerTool(new FileTools());
+          toolkit.registerTool(new CommandTools());
+          toolkit.registerTool(new GitTools());
+          toolkit.registerTool(new TestTools());
+          toolkit.registerTool(new SearchTools());
+
+          // 创建 PlanNotebook
+          PlanNotebook notebook = PlanNotebook.builder()
+              .maxSubtasks(50)
+              .needUserConfirm(false)
+              .storage(new DatabasePlanStorage())  // 持久化计划
+              .build();
+
+          // 创建主 Agent
+          ReActAgent agent = ReActAgent.builder()
+              .name("ClaudeCode")
+              .sysPrompt(loadPrompt("claude-code-prompt.txt"))
+              .model(ClaudeChatModel.builder()...)
+              .planNotebook(notebook)
+              .toolkit(toolkit)
+              .memory(new LongTermMemory(...))
+              .hooks(List.of(
+                  new ProgressDisplayHook(),
+                  new SafetyValidationHook()
+              ))
+              .build();
+
+          // 启动交互式循环
+          while (true) {
+              String userInput = getUserInput();
+              agent.call(Msg.of(userInput)).block();
+          }
+      }
+  }
+
+  ---
+  总结
+
+  Claude Code 使用 PlanNotebook 架构，原因：
+  1. ✅ 单一对话体验
+  2. ✅ 自主任务规划
+  3. ✅ 灵活工具调用
+  4. ✅ 内置状态跟踪
+
+  可能结合 Pipeline 思想：
+  - 某些复杂子任务内部可能使用 Pipeline
+  - 但对用户透明，感知上仍是单 Agent
+
+  这也说明了 PlanNotebook 架构更适合通用 AI 助手，而 MultipleAgents 更适合固定流程的业务场景。
+
+> 请给出PlanNotebookExample的完整call tree,并做plannotebook的分析说明 
+
+● 我来为你详细分析 PlanNotebookExample 的完整调用树和 PlanNotebook 的工作机制。
+
+● Read(agentscope-core\src\main\java\io\agentscope\core\agent\AgentBase.java)
+  ⎿  Read 150 lines
+
+● Read(agentscope-core\src\main\java\io\agentscope\core\ReActAgent.java)
+  ⎿  Read 200 lines
+
+● Search(pattern: "registerPlanNotebookTools|addPlanNotebookHook", type: "java",
+         output_mode: "content")
+  ⎿  Found 0 lines 
+
+● Search(pattern: "planNotebook\.getCurrentHint|planToHint\.generateHint", type:
+         "java", output_mode: "content")
+  ⎿  Found 1 line (ctrl+o to expand)
+
+● Read(agentscope-core\src\main\java\io\agentscope\core\ReActAgent.java)
+  ⎿  Read 100 lines
+
+● Read(agentscope-core\src\main\java\io\agentscope\core\ReActAgent.java)
+  ⎿  Read 100 lines
+
+● Search(pattern: "prepareMessagesWithHint|injectPlanHint", path:
+        "agentscope-core\src\main\java\io\agentscope\core\ReActAgent.java",
+        output_mode: "content")
+  ⎿  Found 0 lines 
+
+● Search(pattern: "private List&lt;Msg&gt; prepareMessages\(\)", path:
+        "agentscope-core\src\main\java\io\agentscope\core\ReActAgent.java",
+        output_mode: "content")
+  ⎿  Found 0 lines 
+
+● Read(agentscope-core\src\main\java\io\agentscope\core\plan\hint\DefaultPlanToH
+      int.java)
+  ⎿  Read 240 lines
+
+● Search(pattern: "planNotebook\s*!=\s*null|getCurrentHint", path:
+        "agentscope-core\src\main\java\io\agentscope\core\ReActAgent.java",
+        output_mode: "content")
+  ⎿  Found 67 lines (ctrl+o to expand)
+
+● Search(pattern: "private void configurePlan", path:
+        "agentscope-core\src\main\java\io\agentscope\core\ReActAgent.java",
+        output_mode: "content")
+  ⎿  Found 36 lines (ctrl+o to expand)
+
+● 现在我可以为你提供完整的调用树和详细分析了！
+
+  ---
+  🌳 PlanNotebookExample 完整调用树
+
+  PlanNotebookExample.main()
+  │
+  ├─ 1. 初始化阶段
+  │   ├─ Toolkit toolkit = new Toolkit()
+  │   ├─ toolkit.registerTool(new PlanNotebookExample())
+  │   │   └─ 注册: writeFile, readFile, calculate 工具
+  │   │
+  │   ├─ PlanNotebook.builder().build()
+  │   │   └─ 创建 PlanNotebook 实例
+  │   │       ├─ planToHint = new DefaultPlanToHint()
+  │   │       ├─ storage = new InMemoryPlanStorage()
+  │   │       ├─ currentPlan = null
+  │   │       └─ maxSubtasks = null
+  │   │
+  │   └─ 创建 planVisualizationHook (用户自定义)
+  │       └─ 监听 PostActingEvent，调用 printPlanState()
+  │
+  ├─ 2. 构建 Agent 阶段
+  │   └─ ReActAgent.builder()
+  │       ├─ .name("PlanAgent")
+  │       ├─ .sysPrompt("...")
+  │       ├─ .model(DashScopeChatModel)
+  │       ├─ .memory(new InMemoryMemory())
+  │       ├─ .toolkit(toolkit)
+  │       ├─ .maxIters(100)
+  │       ├─ .hooks(List.of(planVisualizationHook))
+  │       └─ .planNotebook(planNotebook)
+  │
+  ├─ 3. Builder.build() 内部 [ReActAgent.java:1343-1500]
+  │   │
+  │   ├─ ⭐ configurePlan(agentToolkit) 被调用
+  │   │   │
+  │   │   ├─ 3.1 注册 PlanNotebook 的 10 个工具
+  │   │   │   └─ agentToolkit.registerTool(planNotebook)
+  │   │   │       ├─ create_plan
+  │   │   │       ├─ update_plan_info
+  │   │   │       ├─ revise_current_plan
+  │   │   │       ├─ update_subtask_state
+  │   │   │       ├─ finish_subtask
+  │   │   │       ├─ view_subtasks
+  │   │   │       ├─ get_subtask_count
+  │   │   │       ├─ finish_plan
+  │   │   │       ├─ view_historical_plans
+  │   │   │       └─ recover_historical_plan
+  │   │   │
+  │   │   └─ 3.2 自动添加 PlanHintHook
+  │   │       └─ hooks.add(planHintHook)
+  │   │           └─ PreReasoningEvent → 注入 plan hint
+  │   │
+  │   └─ new ReActAgent(this, agentToolkit)
+  │       └─ 保存 planNotebook 引用
+  │
+  ├─ 4. agent.call(userMsg) [userMsg: "计算矩形面积..."]
+  │   │
+  │   ├─ 4.1 AgentBase.call(Msg)
+  │   │   ├─ checkRunning()
+  │   │   └─ doCall(msgs)
+  │   │
+  │   └─ 4.2 ReActAgent.doCall(List<Msg>) [ReActAgent.java:246-253]
+  │       └─ executeIteration(0)
+  │
+  ├─ 5. executeIteration(0) - 第 1 轮迭代
+  │   │
+  │   └─ reasoning(0, false) [ReActAgent.java:406-485]
+  │       │
+  │       ├─ 5.1 notifyPreReasoningEvent(prepareMessages())
+  │       │   │
+  │       │   ├─ prepareMessages() [构建消息列表]
+  │       │   │   ├─ system prompt
+  │       │   │   ├─ memory messages (空)
+  │       │   │   └─ user message
+  │       │   │
+  │       │   ├─ ⭐ 关键：PlanHintHook 触发！
+  │       │   │   │
+  │       │   │   └─ planHintHook.onEvent(PreReasoningEvent)
+  │       │   │       │
+  │       │   │       ├─ planNotebook.getCurrentHint()
+  │       │   │       │   │
+  │       │   │       │   └─ DefaultPlanToHint.generateHint(null, needUserConfirm=true)
+  │       │   │       │       │
+  │       │   │       │       └─ [currentPlan == null]
+  │       │   │       │           └─ 返回 NO_PLAN 提示
+  │       │   │       │               ```
+  │       │   │       │               <system-hint>
+  │       │   │       │               如果用户的查询很复杂（如编程网站、游戏或应用），
+  │       │   │       │               或者需要很长的步骤链（如从不同来源研究某个主题），
+  │       │   │       │               你需要先调用 'create_plan' 创建计划。
+  │       │   │       │               否则，你可以直接执行用户的查询而无需规划。
+  │       │   │       │
+  │       │   │       │               Important Rules:
+  │       │   │       │               ⚠️ 等待用户确认：
+  │       │   │       │               - 展示计划并确认后再执行
+  │       │   │       │               ...
+  │       │   │       │               </system-hint>
+  │       │   │       │               ```
+  │       │   │       │
+  │       │   │       ├─ 创建 hintMsg (Msg with role=USER, name="user")
+  │       │   │       │
+  │       │   │       └─ modifiedMsgs.add(hintMsg)
+  │       │   │           └─ 注入到消息列表末尾！
+  │       │   │
+  │       │   └─ 继续其他 Hook...
+  │       │
+  │       ├─ 5.2 model.stream(messages, toolSchemas, options)
+  │       │   │
+  │       │   └─ [LLM 收到的消息]
+  │       │       ├─ System: "You are a systematic assistant..."
+  │       │       ├─ User: "Calculate the area..."
+  │       │       └─ User (hint): "<system-hint>你需要先调用 'create_plan'...</system-hint>"
+  │       │
+  │       ├─ 5.3 LLM 推理并决定调用工具
+  │       │   │
+  │       │   └─ [LLM 响应] ToolUseBlock
+  │       │       └─ create_plan 工具调用
+  │       │           ├─ name: "计算并保存矩形面积"
+  │       │           ├─ description: "..."
+  │       │           ├─ expected_outcome: "..."
+  │       │           └─ subtasks: [
+  │       │               {name: "计算面积", ...},
+  │       │               {name: "保存结果", ...},
+  │       │               {name: "验证结果", ...}
+  │       │           ]
+  │       │
+  │       ├─ 5.4 notifyPostReasoningHook
+  │       │   └─ memory.addMessage(reasoningMsg)
+  │       │
+  │       └─ 5.5 acting(0) [ReActAgent.java:500-559]
+  │           │
+  │           ├─ notifyPreActingEvent
+  │           │
+  │           ├─ executeToolCalls([create_plan])
+  │           │   │
+  │           │   └─ toolkit.callTools([ToolUseBlock], ...)
+  │           │       │
+  │           │       └─ PlanNotebook.createPlan(...) [PlanNotebook.java:267-322]
+  │           │           │
+  │           │           ├─ 解析参数
+  │           │           ├─ 创建 Plan 对象
+  │           │           │   └─ new Plan(name, description, expectedOutcome, subtasks)
+  │           │           │       ├─ subtasks: [
+  │           │           │       │   SubTask[0]: TODO → "计算面积"
+  │           │           │       │   SubTask[1]: TODO → "保存结果"
+  │           │           │       │   SubTask[2]: TODO → "验证结果"
+  │           │           │       │ ]
+  │           │           │       └─ state: TODO
+  │           │           │
+  │           │           ├─ currentPlan = plan (保存状态)
+  │           │           │
+  │           │           └─ triggerPlanChangeHooks()
+  │           │               └─ 触发计划变更回调
+  │           │
+  │           └─ notifyPostActingEvent(create_plan)
+  │               │
+  │               └─ ⭐ planVisualizationHook 触发！
+  │                   │
+  │                   └─ printPlanState(notebook, "After create_plan")
+  │                       │
+  │                       └─ [控制台输出]
+  │                           ======================================================================
+  │                           📋 PLAN STATE [After create_plan]
+  │                           ======================================================================
+  │                           Plan: 计算并保存矩形面积
+  │                           State: TODO
+  │
+  │                           Subtasks:
+  │                             ⏸️ [0] 计算面积 - TODO
+  │                             ⏸️ [1] 保存结果到文件 - TODO
+  │                             ⏸️ [2] 验证保存的结果 - TODO
+  │                           ======================================================================
+  │
+  ├─ 6. executeIteration(1) - 第 2 轮迭代
+  │   │
+  │   └─ reasoning(1, false)
+  │       │
+  │       ├─ notifyPreReasoningEvent(prepareMessages())
+  │       │   │
+  │       │   └─ ⭐ PlanHintHook 再次触发！
+  │       │       │
+  │       │       └─ planNotebook.getCurrentHint()
+  │       │           │
+  │       │           └─ DefaultPlanToHint.generateHint(currentPlan, needUserConfirm=true)
+  │       │               │
+  │       │               └─ [检测到：所有子任务都是 TODO]
+  │       │                   └─ 返回 AT_THE_BEGINNING 提示
+  │       │                       ```
+  │       │                       <system-hint>
+  │       │                       当前计划：
+  │       │                       ```
+  │       │                       Plan: 计算并保存矩形面积
+  │       │                       [0] 计算面积 - TODO
+  │       │                       [1] 保存结果 - TODO
+  │       │                       [2] 验证结果 - TODO
+  │       │                       ```
+  │       │
+  │       │                       你的选项包括：
+  │       │                       - 通过调用 'update_subtask_state' 将第一个子任务
+  │       │                         标记为 'in_progress'，并开始执行。
+  │       │                       - 如果第一个子任务不可执行，分析原因...
+  │       │                       
+  │       │                       Important Rules:
+  │       │                       ⚠️ 等待用户确认：...
+  │       │                       </system-hint>
+  │       │                       ```
+  │       │
+  │       ├─ model.stream(messages + hint)
+  │       │
+  │       └─ [LLM 决定]
+  │           ├─ 调用 update_subtask_state(0, "in_progress")
+  │           │   └─ 将子任务 0 标记为 IN_PROGRESS
+  │           │
+  │           └─ 可能直接执行计算（因为用户已要求执行）
+  │
+  ├─ 7. executeIteration(2) - 第 3 轮迭代
+  │   │
+  │   └─ reasoning(2, false)
+  │       │
+  │       └─ ⭐ PlanHintHook 触发
+  │           │
+  │           └─ DefaultPlanToHint.generateHint(currentPlan, ...)
+  │               │
+  │               └─ [检测到：子任务 0 是 IN_PROGRESS]
+  │                   └─ 返回 WHEN_A_SUBTASK_IN_PROGRESS 提示
+  │                       ```
+  │                       <system-hint>
+  │                       当前计划：...
+  │                       现在索引 0 的子任务 '计算面积' 是 'in_progress'。
+  │                       详情如下：
+  │                       ```
+  │                       [0] 计算面积 - IN_PROGRESS
+  │                          描述：计算矩形面积（长=10，宽=5）
+  │                          预期结果：50
+  │                       ```
+  │                       
+  │                       你的选项包括：
+  │                       - 继续执行子任务并获得结果。
+  │                       - 如果子任务完成，调用 'finish_subtask' 并提供具体结果。
+  │                       ...
+  │                       </system-hint>
+  │                       ```
+  │
+  ├─ 8. acting(2)
+  │   │
+  │   └─ executeToolCalls
+  │       │
+  │       ├─ calculate("10 * 5")
+  │       │   └─ PlanNotebookExample.calculate()
+  │       │       └─ 返回 "10 * 5 = 50.0"
+  │       │
+  │       └─ finish_subtask(0, "50")
+  │           │
+  │           └─ PlanNotebook.finishSubtask(0, "50") [PlanNotebook.java:643-714]
+  │               │
+  │               ├─ 验证前置子任务已完成（无前置，通过）
+  │               │
+  │               ├─ subtasks.get(0).finish("50")
+  │               │   └─ SubTask[0].state = DONE
+  │               │   └─ SubTask[0].outcome = "50"
+  │               │
+  │               ├─ ⭐ 自动激活下一个子任务！
+  │               │   │
+  │               │   └─ subtasks.get(1).setState(IN_PROGRESS)
+  │               │       └─ SubTask[1].state = IN_PROGRESS
+  │               │
+  │               └─ triggerPlanChangeHooks()
+  │                   └─ printPlanState("After finish_subtask")
+  │                       ```
+  │                       ✅ [0] 计算面积 - DONE
+  │                       ▶️ [1] 保存结果到文件 - IN_PROGRESS
+  │                       ⏸️ [2] 验证保存的结果 - TODO
+  │                       ```
+  │
+  ├─ 9. executeIteration(3) - 第 4 轮迭代
+  │   │
+  │   └─ reasoning(3, false)
+  │       │
+  │       └─ ⭐ PlanHintHook 触发
+  │           │
+  │           └─ DefaultPlanToHint.generateHint(currentPlan, ...)
+  │               │
+  │               └─ [检测到：子任务 1 是 IN_PROGRESS]
+  │                   └─ 返回针对子任务 1 的提示
+  │                       ```
+  │                       现在索引 1 的子任务 '保存结果到文件' 是 'in_progress'
+  │                       详情：...
+  │
+  │                       你的选项包括：
+  │                       - 继续执行子任务...
+  │                       - 如果完成，调用 'finish_subtask'
+  │                       ...
+  │                       ```
+  │
+  ├─ 10. acting(3)
+  │   │
+  │   └─ executeToolCalls
+  │       │
+  │       ├─ writeFile("result.txt", "50")
+  │       │   └─ PlanNotebookExample.writeFile()
+  │       │       └─ fileStorage.put("result.txt", "50")
+  │       │
+  │       └─ finish_subtask(1, "File saved: result.txt")
+  │           │
+  │           └─ PlanNotebook.finishSubtask(1, "File saved: result.txt")
+  │               │
+  │               ├─ 验证前置子任务（子任务 0 已 DONE ✓）
+  │               │
+  │               ├─ SubTask[1].finish(...)
+  │               │
+  │               ├─ 自动激活子任务 2
+  │               │   └─ SubTask[2].state = IN_PROGRESS
+  │               │
+  │               └─ printPlanState("After finish_subtask")
+  │                   ```
+  │                   ✅ [0] 计算面积 - DONE
+  │                   ✅ [1] 保存结果到文件 - DONE
+  │                   ▶️ [2] 验证保存的结果 - IN_PROGRESS
+  │                   ```
+  │
+  ├─ 11. executeIteration(4) - 第 5 轮迭代
+  │   │
+  │   └─ reasoning(4, false)
+  │       │
+  │       └─ ⭐ PlanHintHook 提示子任务 2 的详情
+  │
+  ├─ 12. acting(4)
+  │   │
+  │   └─ executeToolCalls
+  │       │
+  │       ├─ readFile("result.txt")
+  │       │   └─ 返回 "50"
+  │       │
+  │       └─ finish_subtask(2, "验证通过：文件内容为 50")
+  │           │
+  │           └─ PlanNotebook.finishSubtask(2, "验证通过...")
+  │               │
+  │               ├─ 验证前置子任务（子任务 0, 1 已 DONE ✓）
+  │               │
+  │               ├─ SubTask[2].finish(...)
+  │               │
+  │               ├─ ⭐ 没有下一个子任务了，不激活
+  │               │
+  │               └─ printPlanState("After finish_subtask")
+  │                   ```
+  │                   ✅ [0] 计算面积 - DONE
+  │                   ✅ [1] 保存结果到文件 - DONE
+  │                   ✅ [2] 验证保存的结果 - DONE
+  │                   ```
+  │
+  ├─ 13. executeIteration(5) - 第 6 轮迭代
+  │   │
+  │   └─ reasoning(5, false)
+  │       │
+  │       └─ ⭐ PlanHintHook 触发
+  │           │
+  │           └─ DefaultPlanToHint.generateHint(currentPlan, ...)
+  │               │
+  │               └─ [检测到：所有子任务都是 DONE]
+  │                   └─ 返回 AT_THE_END 提示
+  │                       ```
+  │                       <system-hint>
+  │                       当前计划：...
+  │                       所有子任务都已完成。现在你的选项包括：
+  │                       - 通过调用 'finish_plan' 完成计划并提供具体结果，
+  │                         并向用户总结整个过程和结果。
+  │                       ...
+  │                       </system-hint>
+  │                       ```
+  │
+  ├─ 14. acting(5)
+  │   │
+  │   └─ executeToolCalls
+  │       │
+  │       └─ finish_plan("done", "计算完成！矩形面积为 50，已保存到 result.txt")
+  │           │
+  │           └─ PlanNotebook.finishPlan("done", outcome) [PlanNotebook.java:802-846]
+  │               │
+  │               ├─ currentPlan.finish(DONE, outcome)
+  │               │   └─ plan.state = DONE
+  │               │
+  │               ├─ storage.addPlan(currentPlan)
+  │               │   └─ 保存到历史记录
+  │               │
+  │               ├─ currentPlan = null (清空当前计划)
+  │               │
+  │               └─ triggerPlanChangeHooks()
+  │                   └─ printPlanState("After finish_plan")
+  │                       ```
+  │                       📋 PLAN STATE [After finish_plan]
+  │                       No active plan
+  │                       ```
+  │
+  ├─ 15. 最终响应生成
+  │   │
+  │   └─ reasoning(6, false)
+  │       │
+  │       └─ model.stream(messages)
+  │           │
+  │           └─ LLM 生成最终响应
+  │               └─ "任务完成！我已成功：\n1. 计算矩形面积：50\n2..."
+  │
+  └─ 16. 返回结果
+      │
+      └─ Msg response
+          └─ 用户看到最终输出
+
+  ---
+  🔍 PlanNotebook 深度分析
+
+  一、核心机制
+
+  1. 自动工具注册 [ReActAgent.java:1472-1474]
+
+  private void configurePlan(Toolkit agentToolkit) {
+      // 将 PlanNotebook 的 10 个方法作为工具暴露给 LLM
+      agentToolkit.registerTool(planNotebook);
+  }
+
+  作用：让 LLM 可以通过工具调用来管理计划。
+
+  ---
+  2. 自动 Hint 注入 [ReActAgent.java:1476-1500]
+
+  Hook planHintHook = new Hook() {
+      public <T extends HookEvent> Mono<T> onEvent(T event) {
+          if (event instanceof PreReasoningEvent) {
+              PreReasoningEvent e = (PreReasoningEvent) event;
+              return planNotebook.getCurrentHint()
+                  .map(hintMsg -> {
+                      List<Msg> modifiedMsgs = new ArrayList<>(e.getInputMessages());
+                      modifiedMsgs.add(hintMsg); // 注入 hint！
+                      e.setInputMessages(modifiedMsgs);
+                      return (T) e;
+                  })
+                  .defaultIfEmpty(event);
+          }
+          return Mono.just(event);
+      }
+  };
+  hooks.add(planHintHook);
+
+  关键：
+  - 触发时机：每次 LLM 推理前（PreReasoningEvent）
+  - 注入位置：消息列表末尾
+  - 内容格式：<system-hint>...</system-hint>
+  - 目的：引导 LLM 按计划执行
+
+  ---
+  3. 动态 Hint 生成 [DefaultPlanToHint.java:161-238]
+
+  public String generateHint(Plan plan, boolean needUserConfirm) {
+      if (plan == null) {
+          return NO_PLAN_HINT; // 提示创建计划
+      }
+
+      // 统计子任务状态
+      int nTodo, nInProgress, nDone, nAbandoned;
+      Integer inProgressIdx = null;
+
+      // 根据状态返回不同提示
+      if (nDone + nAbandoned == all) {
+          return AT_THE_END; // 提示完成计划
+      } else if (nInProgress == 0 && nDone == 0) {
+          return AT_THE_BEGINNING; // 提示开始第一个任务
+      } else if (nInProgress > 0) {
+          return WHEN_A_SUBTASK_IN_PROGRESS; // 提示执行当前任务
+      } else if (nInProgress == 0 && nDone > 0) {
+          return WHEN_NO_SUBTASK_IN_PROGRESS; // 提示开始下一个任务
+      }
+  }
+
+  5 种 Hint 场景：
+
+  | 状态                      | Hint 内容                                            | 引导行为     |
+  |---------------------------|------------------------------------------------------|--------------|
+  | plan == null              | "如果任务复杂，先调用 create_plan"                   | 创建计划     |
+  | 全部 TODO                 | "通过 update_subtask_state 标记第一个为 in_progress" | 开始执行     |
+  | 某个 IN_PROGRESS          | "现在执行子任务 X，完成后调用 finish_subtask"        | 完成当前任务 |
+  | 无 IN_PROGRESS，部分 DONE | "标记下一个为 in_progress"                           | 继续下一个   |
+  | 全部 DONE/ABANDONED       | "调用 finish_plan 完成计划"                          | 结束计划     |
+
+  ---
+  4. 状态自动流转 [PlanNotebook.java:694-712]
+
+  public Mono<String> finishSubtask(int subtaskIdx, String outcome) {
+      // 1. 验证前置子任务都已完成
+      for (int i = 0; i < subtaskIdx; i++) {
+          if (subtasks.get(i).getState() != SubTaskState.DONE) {
+              return Mono.error("前置任务未完成");
+          }
+      }
+
+      // 2. 标记当前任务完成
+      subtasks.get(subtaskIdx).finish(outcome);
+
+      // 3. 自动激活下一个任务！
+      if (subtaskIdx + 1 < subtasks.size()) {
+          SubTask nextSubtask = subtasks.get(subtaskIdx + 1);
+          nextSubtask.setState(SubTaskState.IN_PROGRESS);
+          return Mono.just("任务完成，下一个任务已激活");
+      }
+
+      return Mono.just("任务完成");
+  }
+
+  关键设计：
+  - ✅ 顺序执行约束：必须按顺序完成
+  - ✅ 自动激活机制：完成一个自动激活下一个
+  - ✅ 状态一致性：保证只有一个 IN_PROGRESS
+
+  ---
+  二、关键技术点
+
+  1. 状态机模型
+
+  Plan 状态机：
+  TODO → IN_PROGRESS → DONE
+    ↓         ↓
+    └────→ ABANDONED
+
+  SubTask 状态机：
+  TODO → IN_PROGRESS → DONE
+    ↓         ↓
+    └────→ ABANDONED
+
+  状态转换规则：
+  - 任何状态都可以 ABANDONED
+  - TODO → IN_PROGRESS 需要验证前置任务
+  - IN_PROGRESS → DONE 需要提供 outcome
+  - 只能有一个子任务处于 IN_PROGRESS
+
+  ---
+  2. Hook 系统的巧妙运用
+
+  // 用户自定义 Hook：监听工具调用后的事件
+  Hook planVisualizationHook = new Hook() {
+      public <T extends HookEvent> Mono<T> onEvent(T event) {
+          if (event instanceof PostActingEvent postActing) {
+              String toolName = postActing.getToolUse().getName();
+              printPlanState(planNotebook, "After " + toolName);
+          }
+          return Mono.just(event);
+      }
+  };
+
+  作用：
+  - 可视化：实时显示计划状态
+  - 调试：追踪工具调用流程
+  - 非侵入：不影响主流程
+
+  ---
+  3. 响应式编程优势
+
+  public Mono<Msg> getCurrentHint() {
+      String hintContent = planToHint.generateHint(currentPlan, needUserConfirm);
+      if (hintContent != null) {
+          return Mono.just(Msg.builder()
+              .role(MsgRole.USER)
+              .content(TextBlock.builder().text(hintContent).build())
+              .build());
+      }
+      return Mono.empty(); // 无 hint 时返回空
+  }
+
+  优势：
+  - ✅ 非阻塞：Hint 生成本质是同步的，但包装成 Mono 保持一致性
+  - ✅ 可组合：可以与其他 Mono 链式调用
+  - ✅ 惰性：只有订阅时才执行
+
+  ---
+  三、PlanNotebook 的优势
+
+  1. 对 LLM 的引导
+
+  问题：LLM 面对复杂任务容易迷失
+
+  解决：每次推理前注入上下文提示
+  <system-hint>
+  现在执行子任务 0 "计算面积"
+  预期结果：50
+  你的选项：
+  - 继续执行
+  - 完成后调用 finish_subtask(0, "具体结果")
+  ...
+  </system-hint>
+
+  2. 对开发者的友好
+
+  问题：如何让 Agent 按计划执行？
+
+  解决：只需一行配置
+  ReActAgent.builder()
+      .planNotebook(PlanNotebook.builder().build())
+      .build();
+
+  自动完成：
+  - ✅ 工具注册
+  - ✅ Hook 注入
+  - ✅ 提示生成
+
+  3. 状态持久化
+
+  @Override
+  public void saveTo(Session session, SessionKey sessionKey) {
+      session.save(sessionKey, "planNotebook_state",
+          new PlanNotebookState(currentPlan));
+  }
+
+  @Override
+  public void loadFrom(Session session, SessionKey sessionKey) {
+      this.currentPlan = null; // 先清空
+      session.get(sessionKey, "planNotebook_state", PlanNotebookState.class)
+          .ifPresent(state -> this.currentPlan = state.currentPlan());
+  }
+
+  支持场景：
+  - 对话中断后恢复
+  - 跨会话保存计划状态
+  - 多实例隔离（keyPrefix）
+
+  ---
+  四、与代码示例的对应关系
+
+  | 示例行为             | PlanNotebook 内部机制           | 代码位置                         |
+  |----------------------|---------------------------------|----------------------------------|
+  | Agent 知道要创建计划 | Hint 注入 "create_plan"         | DefaultPlanToHint.java:72-77     |
+  | Agent 按步骤执行     | Hint 提示当前子任务             | DefaultPlanToHint.java:95-113    |
+  | 完成后自动激活下一个 | finishSubtask 自动激活          | PlanNotebook.java:697-701        |
+  | 用户看到进度可视化   | PostActingHook + printPlanState | PlanNotebookExample.java:160-171 |
+  | 最后调用 finish_plan | Hint 提示 "所有任务完成"        | DefaultPlanToHint.java:130-141   |
+
+  ---
+  五、总结
+
+  PlanNotebook 的本质：
+  1. 工具集：10 个计划管理工具
+  2. 提示生成器：根据状态动态生成引导提示
+  3. 状态机：维护计划和子任务的状态
+  4. Hook 注入器：自动注入到 Agent 执行流程
+
+  核心价值：
+  - ✅ 让单个 Agent 具备复杂任务规划和执行能力
+  - ✅ 通过提示工程引导 LLM 按计划执行
+  - ✅ 自动化状态管理，减少手动干预
+  - ✅ 可视化和可调试
+
+  这解释了为什么 PlanNotebook 适合实现 Claude Code 这样的工具！
+
+> /export plannotebook.md 
+  ⎿  Conversation exported to: plannotebook.txt
+
+> 请问PlanNotebook是如何创建计划的，通过模型创建的吗 
+
+● 非常好的问题！让我详细解释 PlanNotebook 的计划创建机制。
+
+  ---
+  🎯 核心答案
+
+  PlanNotebook 本身不创建计划，它只是提供：
+  1. 工具接口 (create_plan 方法)
+  2. 状态管理 (保存和跟踪计划)
+
+  真正的计划创建者是 LLM（大语言模型）！
+
+  ---
+  📊 完整流程图解
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  阶段 1: LLM 决定需要创建计划                                 │
+  └─────────────────────────────────────────────────────────────┘
+
+  用户请求: "计算矩形面积并保存到文件"
+      ↓
+  ReActAgent.call()
+      ↓
+  reasoning() 第 1 轮
+      ↓
+  PreReasoningHook 注入 Hint
+      ↓
+  发送给 LLM 的消息:
+    - System: "You are a systematic assistant..."
+    - User: "计算矩形面积并保存到文件"
+    - User (hint): "<system-hint>
+                      如果任务复杂，你需要先调用 'create_plan' 创建计划
+                     </system-hint>"
+      ↓
+  LLM 推理: "这是一个多步骤任务，我应该先创建计划"
+      ↓
+  LLM 决定调用: create_plan 工具
+
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  阶段 2: LLM 调用 create_plan 工具 (计划内容由 LLM 生成)      │
+  └─────────────────────────────────────────────────────────────┘
+
+  LLM 生成工具调用:
+  ToolUseBlock {
+    name: "create_plan",
+    parameters: {
+      name: "计算并保存矩形面积",           ← LLM 生成的计划名称
+      description: "计算矩形面积(长=10,宽=5)，保存到文件并验证",
+      expected_outcome: "矩形面积计算完成并保存",
+      subtasks: [                           ← LLM 分解的子任务
+        {
+          name: "计算面积",
+          description: "使用 calculate 工具计算 10 * 5",
+          expected_outcome: "50"
+        },
+        {
+          name: "保存结果到文件",
+          description: "使用 writeFile 工具保存结果",
+          expected_outcome: "result.txt 已保存"
+        },
+        {
+          name: "验证保存的结果",
+          description: "使用 readFile 工具读取并验证",
+          expected_outcome: "验证通过"
+        }
+      ]
+    }
+  }
+      ↓
+  acting() 阶段
+      ↓
+  toolkit.callTools([create_plan])
+
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  阶段 3: PlanNotebook 执行 create_plan 方法                   │
+  └─────────────────────────────────────────────────────────────┘
+
+  PlanNotebook.createPlan(
+    name: "计算并保存矩形面积",
+    description: "...",
+    expected_outcome: "...",
+    subtasks: [...]
+  ) [PlanNotebook.java:267-322]
+      ↓
+  1. 解析参数 (将 Map 转换为 SubTask 对象)
+     List<SubTask> subtaskList = [];
+     for (Map<String, Object> subtaskMap : subtasks) {
+         subtaskList.add(mapToSubTask(subtaskMap));
+     }
+      ↓
+  2. 创建 Plan 对象
+     Plan plan = new Plan(name, description, expectedOutcome, subtaskList);
+     // plan.state = TODO
+     // plan.subtasks = [
+     //   SubTask[0]: {name: "计算面积", state: TODO, ...},
+     //   SubTask[1]: {name: "保存结果", state: TODO, ...},
+     //   SubTask[2]: {name: "验证结果", state: TODO, ...}
+     // ]
+      ↓
+  3. 保存到当前计划
+     currentPlan = plan;
+      ↓
+  4. 触发 Hook
+     triggerPlanChangeHooks();
+      ↓
+  5. 返回成功消息给 LLM
+     return "Plan '计算并保存矩形面积' created successfully."
+
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  阶段 4: LLM 收到反馈，继续执行                               │
+  └─────────────────────────────────────────────────────────────┐
+
+  下一轮 reasoning()
+      ↓
+  PreReasoningHook 注入新的 Hint
+      ↓
+  发送给 LLM 的消息:
+    - System: "..."
+    - User: "计算矩形面积并保存到文件"
+    - Assistant: ToolUseBlock(create_plan)
+    - User: ToolResultBlock("Plan created successfully")
+    - User (hint): "<system-hint>
+                      当前计划：
+                      [0] 计算面积 - TODO
+                      [1] 保存结果 - TODO
+                      [2] 验证结果 - TODO
+
+                      你的选项包括：
+                      - 通过调用 'update_subtask_state' 标记第一个为 in_progress
+                      ...
+                     </system-hint>"
+      ↓
+  LLM 推理: "好，现在开始执行第一个任务"
+      ↓
+  LLM 调用: update_subtask_state(0, "in_progress")
+
+  ---
+  🔑 关键点解析
+
+  1. LLM 是规划者
+
+  // LLM 收到的 Hint [DefaultPlanToHint.java:72-77]
+  String NO_PLAN =
+      "如果用户的查询很复杂（如编程网站、游戏或应用），" +
+      "或者需要很长的步骤链（如从不同来源研究某个主题），" +
+      "你需要先调用 'create_plan' 创建计划。";
+
+  LLM 的决策过程：
+  LLM 推理链：
+  1. 分析任务："计算面积 → 保存 → 验证" (3 个步骤)
+  2. 判断：这是复杂任务，需要规划
+  3. 决策：调用 create_plan 工具
+  4. 生成计划内容：
+     - 计划名称："计算并保存矩形面积"
+     - 分解为 3 个子任务
+     - 每个子任务指定名称、描述、预期结果
+
+  ---
+  2. PlanNotebook 是执行者
+
+  @Tool(name = "create_plan", description = "Create a plan by given name and sub-tasks")
+  public Mono<String> createPlan(
+      @ToolParam(name = "name", description = "...") String name,
+      @ToolParam(name = "description", description = "...") String description,
+      @ToolParam(name = "expected_outcome", description = "...") String expectedOutcome,
+      @ToolParam(name = "subtasks", description = "...") List<Map<String, Object>> subtasks) {
+
+      // PlanNotebook 只负责：
+      // 1. 接收 LLM 生成的参数
+      // 2. 创建 Plan 对象
+      // 3. 保存到 currentPlan
+      // 4. 返回成功消息
+
+      Plan plan = new Plan(name, description, expectedOutcome, subtaskList);
+      currentPlan = plan;
+      return triggerPlanChangeHooks().thenReturn("Plan created successfully.");
+  }
+
+  PlanNotebook 不做：
+  - ❌ 不分析任务
+  - ❌ 不分解步骤
+  - ❌ 不决定子任务内容
+
+  PlanNotebook 只做：
+  - ✅ 接收 LLM 的计划
+  - ✅ 保存计划状态
+  - ✅ 跟踪执行进度
+
+  ---
+  3. 工具定义引导 LLM
+
+  @Tool(name = "create_plan", description = "Create a plan by given name and sub-tasks")
+  public Mono<String> createPlan(
+      @ToolParam(name = "name", 
+          description = "The plan name, should be concise, descriptive and not exceed 10 words")
+      String name,
+      
+      @ToolParam(name = "description", 
+          description = "The plan description, including the constraints, target and outcome to be achieved. The description should be clear, specific and concise...")
+      String description,
+      
+      @ToolParam(name = "subtasks", 
+          description = "A list of sequential sub-tasks. Each subtask must be an object with: 'name' (string, required), 'description' (string), 'expected_outcome' (string). Example: [{\"name\": \"Calculate area\", \"description\": \"Multiply length by width\", \"expected_outcome\": \"Area value\"}]")
+      List<Map<String, Object>> subtasks)
+
+  工具的 description 就是给 LLM 的指令！
+
+  LLM 看到：
+  工具名称: create_plan
+  工具描述: "通过给定的名称和子任务创建计划"
+  参数说明:
+    - name: 计划名称，简洁描述，不超过 10 个词
+    - description: 计划描述，包括约束、目标和预期结果
+    - subtasks: 顺序子任务列表，每个子任务包含：
+      * name (字符串，必需)
+      * description (字符串)
+      * expected_outcome (字符串)
+      示例: [{"name": "Calculate area", "description": "Multiply length by width", "expected_outcome": "Area value"}]
+
+  LLM 按照这个模板生成计划！
+
+  ---
+  📝 对比：有无 PlanNotebook 的差异
+
+  场景：没有 PlanNotebook
+
+  用户: "计算矩形面积并保存到文件"
+      ↓
+  LLM 直接执行:
+    1. 调用 calculate("10 * 5")
+    2. 调用 writeFile("result.txt", "50")
+    3. 调用 readFile("result.txt")
+      ↓
+  问题：
+    - LLM 可能漏掉某个步骤
+    - 执行顺序可能混乱
+    - 无法追踪进度
+    - 中途出错无法恢复
+
+  场景：有 PlanNotebook
+
+  用户: "计算矩形面积并保存到文件"
+      ↓
+  LLM 先创建计划:
+    create_plan({
+      name: "计算并保存矩形面积",
+      subtasks: [
+        {name: "计算面积", ...},
+        {name: "保存结果", ...},
+        {name: "验证结果", ...}
+      ]
+    })
+      ↓
+  PlanNotebook 保存计划
+      ↓
+  Hint 提示: "标记第一个子任务为 in_progress"
+      ↓
+  LLM: update_subtask_state(0, "in_progress")
+      ↓
+  Hint 提示: "现在执行子任务 0: 计算面积"
+      ↓
+  LLM: calculate("10 * 5")
+      ↓
+  LLM: finish_subtask(0, "50")
+      ↓
+  PlanNotebook 自动激活子任务 1
+      ↓
+  Hint 提示: "现在执行子任务 1: 保存结果"
+      ↓
+  ... 依次执行
+      ↓
+  优势：
+    ✅ 结构化执行
+    ✅ 进度可追踪
+    ✅ 状态可恢复
+    ✅ 可视化展示
+
+  ---
+  🎭 角色分工总结
+
+  | 角色             | 职责            | 能力                                                                              |
+  |------------------|-----------------|-----------------------------------------------------------------------------------|
+  | LLM (大语言模型) | 规划者          | - 分析任务复杂度- 决定是否需要计划- 分解任务步骤- 生成计划内容                    |
+  | PlanNotebook     | 执行者 + 跟踪者 | - 提供 create_plan 工具- 接收并保存计划- 管理计划状态- 生成执行提示- 强制顺序执行 |
+  | ReActAgent       | 协调者          | - 注册 PlanNotebook 工具- 注入 Hint Hook- 协调推理和行动- 管理执行流程            |
+
+  ---
+  💡 类比理解
+
+  就像项目经理和项目管理软件：
+
+  - LLM = 项目经理
+    - 决定项目目标
+    - 分解任务
+    - 制定计划
+  - PlanNotebook = Jira/Trello 软件
+    - 提供创建任务的界面（create_plan 工具）
+    - 保存任务列表（currentPlan）
+    - 跟踪任务状态（TODO → IN_PROGRESS → DONE）
+    - 提醒下一步操作（Hint）
+  - ReActAgent = 团队协作平台
+    - 整合工具和软件
+    - 协调工作流程
+
+  ---
+  🔧 代码验证
+
+  让我们看 create_plan 的实现细节：
+
+  @Tool(name = "create_plan", description = "Create a plan by given name and sub-tasks")
+  public Mono<String> createPlan(
+      @ToolParam(name = "name", description = "The plan name...") String name,
+      @ToolParam(name = "description", description = "The plan description...") String description,
+      @ToolParam(name = "expected_outcome", description = "The expected outcome...") String expectedOutcome,
+      @ToolParam(name = "subtasks", description = "A list of sequential sub-tasks...") List<Map<String, Object>> subtasks) {
+
+      // 关键：参数全部由 LLM 提供！
+
+      // 1. 转换 Map 为 SubTask 对象
+      List<SubTask> subtaskList = new ArrayList<>();
+      for (Map<String, Object> subtaskMap : subtasks) {
+          subtaskList.add(mapToSubTask(subtaskMap));
+          // SubTask 的 name, description, expected_outcome
+          // 全部来自 LLM 生成的 Map！
+      }
+
+      // 2. 创建 Plan 对象（只是数据结构，不含业务逻辑）
+      Plan plan = new Plan(name, description, expectedOutcome, subtaskList);
+
+      // 3. 保存到状态
+      currentPlan = plan;
+
+      // 4. 通知观察者
+      return triggerPlanChangeHooks()
+          .thenReturn(String.format("Plan '%s' created successfully.", name));
+  }
+
+  证据：
+  - ✅ 所有参数都来自 LLM 的工具调用
+  - ✅ PlanNotebook 只是被动接收和保存
+  - ✅ 没有任何"智能"逻辑
+
+  ---
+  🎯 总结
+
+  问题：PlanNotebook 是如何创建计划的？
+
+  答案：
+  1. 不是 PlanNotebook 创建计划
+  2. 是 LLM（模型）创建计划
+  3. PlanNotebook 只提供工具接口和状态管理
+
+  流程：
+  LLM 分析任务 → LLM 决定需要计划 → LLM 调用 create_plan 工具 
+  → LLM 生成计划内容（name, subtasks...） 
+  → PlanNotebook 接收并保存 → PlanNotebook 跟踪执行
+
+  本质：
+  - LLM = 大脑（决策者）
+  - PlanNotebook = 记事本（记录者）
+
+  这就是为什么 PlanNotebook 可以适配任何 LLM（OpenAI、DashScope、Anthropic 等），因为它不依赖特定模型的"规划能力"，只是提供一个标准化的工具接口让模型调用！
+
+
+

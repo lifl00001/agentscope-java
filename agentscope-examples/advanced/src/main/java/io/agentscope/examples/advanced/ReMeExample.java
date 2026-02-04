@@ -95,7 +95,7 @@ public class ReMeExample {
     private static String getReMeBaseUrl() {
         String baseUrl = System.getenv("REME_API_BASE_URL");
         if (baseUrl == null || baseUrl.isEmpty()) {
-            return "http://localhost:8002";
+            return "http://115.190.193.166:8002/";
         }
         return baseUrl;
     }
