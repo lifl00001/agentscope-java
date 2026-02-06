@@ -82,12 +82,6 @@
             <artifactId>agentscope-extensions-higress</artifactId>
         </dependency>
 
-        <!-- Nacos MCP Extension -->
-        <dependency>
-            <groupId>io.agentscope</groupId>
-            <artifactId>agentscope-extensions-nacos</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>io.agentscope</groupId>
             <artifactId>agentscope-extensions-rag-haystack</artifactId>
