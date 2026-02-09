@@ -119,9 +119,9 @@ class DifyKnowledgeTest {
 
         DifyRAGConfig config =
                 DifyRAGConfig.builder()
-                        .apiKey("test-api-key")
+                        .apiKey("dataset-XQkWpRwqI06e4h5mN0eDUHgB")
                         .apiBaseUrl(mockWebServer.url("/v1").toString())
-                        .datasetId("dataset-123")
+                        .datasetId("dd263f99-eab2-4eae-ba57-69f2467436e4")
                         .build();
 
         DifyKnowledge knowledge = DifyKnowledge.builder().config(config).build();
@@ -129,7 +129,7 @@ class DifyKnowledgeTest {
         RetrieveConfig retrieveConfig =
                 RetrieveConfig.builder().limit(5).scoreThreshold(0.5).build();
 
-        List<Document> documents = knowledge.retrieve("What is RAG?", retrieveConfig).block();
+        List<Document> documents = knowledge.retrieve("机器人", retrieveConfig).block();
 
         assertNotNull(documents);
         assertEquals(2, documents.size());
@@ -223,6 +223,43 @@ class DifyKnowledgeTest {
                 () -> {
                     knowledge.retrieve("test query", null).block();
                 });
+    }
+
+    @Test
+    void testRetrieveWithRerankingConfig() throws Exception {
+        mockWebServer.enqueue(createSuccessResponse());
+
+        // 使用与 Postman 相同的配置
+        DifyRAGConfig config =
+                DifyRAGConfig.builder()
+                        .apiKey("dataset-XQkWpRwqI06e4h5mN0eDUHgB")
+                        .apiBaseUrl(mockWebServer.url("/v1").toString())
+                        .datasetId("dd263f99-eab2-4eae-ba57-69f2467436e4")
+                        .retrievalMode(RetrievalMode.KEYWORD_SEARCH)
+                        .topK(3)
+                        .scoreThreshold(0.5)
+                        .enableRerank(true)
+                        .rerankConfig(
+                                RerankConfig.builder()
+                                        .providerName("langgenius/siliconflow/siliconflow")
+                                        .modelName("netease-youdao/bce-reranker-base_v1")
+                                        .build())
+                        .build();
+
+        DifyKnowledge knowledge = DifyKnowledge.builder().config(config).build();
+
+        RetrieveConfig retrieveConfig =
+                RetrieveConfig.builder().limit(5).scoreThreshold(0.5).build();
+
+        List<Document> documents = knowledge.retrieve("机器人", retrieveConfig).block();
+
+        assertNotNull(documents);
+        assertEquals(2, documents.size());
+
+        Document firstDoc = documents.get(0);
+        assertNotNull(firstDoc.getMetadata());
+        assertTrue(firstDoc.getMetadata().getContentText().contains("Retrieval-Augmented"));
+        assertEquals(0.95, firstDoc.getScore(), 0.001);
     }
 
     @Test
