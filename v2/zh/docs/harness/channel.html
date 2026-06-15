@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="article:modified_time" content="2026-06-02T16:19:40+00:00" /><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="工作区（Workspace）" href="workspace.html"><link rel="prev" title="Harness 架构" href="architecture.html">
-        <link rel="canonical" href="https://java.agentscope.io/v2/zh/docs/harness/context.html">
+    <meta property="article:modified_time" content="2026-06-15T03:10:40+00:00" /><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="V1 迁移指南" href="../change-log.html"><link rel="prev" title="计划模式（Plan Mode）" href="plan-mode.html">
+        <link rel="canonical" href="https://java.agentscope.io/v2/zh/docs/harness/channel.html">
         <link rel="prefetch" href="../../../../_static/logo.svg" as="image">
 
     <link rel="shortcut icon" href="../../../../_static/logo.svg"><!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
-        <title>上下文与会话 - AgentScope Java</title>
+        <title>Channel - AgentScope Java</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=9c3e77be" />
@@ -88,8 +88,8 @@
   <nav
     class="docs-top-tabs"
     aria-label="Documentation sections"
-    data-current-page="v2/zh/docs/harness/context"
-    data-current-lang="en"
+    data-current-page="v2/zh/docs/harness/channel"
+    data-current-lang="zh"
     data-current-version="v2"
   >
     <div class="docs-top-tabs__list">
@@ -105,7 +105,7 @@
           
             <a
               class="docs-top-tabs__link"
-              href="../../../en/intro.html"
+              href="../../intro.html"
               data-tab-id="home"
               data-mirror-paths="true"
               data-href-en="v1/en/intro"
@@ -125,7 +125,7 @@
               data-sections-v2-en=""
               data-sections-v2-zh=""
             >
-              Home
+              首页
             </a>
           
         
@@ -141,7 +141,7 @@
           
             <a
               class="docs-top-tabs__link"
-              href="../../../en/docs/index.html"
+              href="../index.html"
               data-tab-id="docs"
               data-mirror-paths="true"
               data-href-en="v1/en/docs/quickstart/installation"
@@ -161,7 +161,7 @@
               data-sections-v2-en="v2 · Quick Start|v2 · Building Blocks|v2 · Harness (English)|v2 · Reference"
               data-sections-v2-zh="v2 · 快速开始|v2 · 核心组件|v2 · Harness|v2 · 参考"
             >
-              Docs
+              文档
             </a>
           
         
@@ -177,7 +177,7 @@
           
             <a
               class="docs-top-tabs__link"
-              href="../../../en/integration/overview.html"
+              href="../../integration/overview.html"
               data-tab-id="integration"
               data-mirror-paths="true"
               data-href-en="v1/en/integration/overview"
@@ -197,7 +197,7 @@
               data-sections-v2-en="v2 · Integration"
               data-sections-v2-zh="v2 · 集成"
             >
-              Integration
+              集成
             </a>
           
         
@@ -213,7 +213,7 @@
           
             <a
               class="docs-top-tabs__link"
-              href="../../../en/blogs/agentscope-v2-release.html"
+              href="../../blogs/agentscope-v2-release.html"
               data-tab-id="blogs"
               data-mirror-paths="true"
               data-href-en="v1/en/blogs/index"
@@ -233,7 +233,7 @@
               data-sections-v2-en="v2 · Blogs"
               data-sections-v2-zh="v2 · 博客"
             >
-              Blogs
+              博客
             </a>
           
         
@@ -249,7 +249,7 @@
           
             <a
               class="docs-top-tabs__link"
-              href="../../../en/community/contributors.html"
+              href="../../community/contributors.html"
               data-tab-id="community"
               data-mirror-paths="true"
               data-href-en="v1/en/community/overview"
@@ -269,7 +269,7 @@
               data-sections-v2-en="v2 · Community"
               data-sections-v2-zh="v2 · 社区"
             >
-              Community
+              社区
             </a>
           
         
@@ -672,7 +672,6 @@
 <p class="caption" role="heading"><span class="caption-text">v2 · Quick Start</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/index.html">What's AgentScope 2.0?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../en/docs/change-log.html">Change Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/quickstart.html">Quickstart</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Building Blocks</span></p>
@@ -683,11 +682,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/building-blocks/model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/building-blocks/permission-system.html">Permission System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/building-blocks/tool.html">Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../en/docs/building-blocks/context.html">Context &amp; AgentState</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Harness (English)</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/context.html">Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/compaction.html">Compaction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/workspace.html">Workspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/memory.html">Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/filesystem.html">Filesystem</a></li>
@@ -695,9 +695,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/subagent.html">Subagent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/skill.html">Skill</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/plan-mode.html">Plan Mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../en/docs/harness/channel.html">Channel</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../en/docs/change-log.html">Migration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../en/docs/others/release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/others/going-to-production.html">Going to Production</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/docs/others/faq.html">FAQ</a></li>
 </ul>
@@ -705,17 +708,21 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../en/integration/overview.html">Overview</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/memory/index.html">Memory</a><input aria-label="Toggle navigation of Memory" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/memory/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/memory/mem0.html">Mem0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/memory/bailian.html">Bailian Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/memory/reme.html">ReMe</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/session/index.html">Session</a><input aria-label="Toggle navigation of Session" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/session/mysql.html">MySQL Session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/session/redis.html">Redis Session</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/session/index.html">Agent State Store</a><input aria-label="Toggle navigation of Agent State Store" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/session/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/session/mysql.html">MySQL State Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/session/redis.html">Redis State Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/session/oss.html">OSS State Store</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/rag/index.html">RAG Knowledge Base</a><input aria-label="Toggle navigation of RAG Knowledge Base" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/rag/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/rag/simple.html">Simple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/rag/bailian.html">Bailian Knowledge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/rag/dify.html">Dify</a></li>
@@ -724,26 +731,29 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/skill/index.html">Skill Repository</a><input aria-label="Toggle navigation of Skill Repository" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/skill/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/skill/git-repository.html">Git Skill Repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/skill/mysql-repository.html">MySQL Skill Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/skill/postgresql-repository.html">PostgreSQL Skill Repository</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/protocol/index.html">Agent Protocols</a><input aria-label="Toggle navigation of Agent Protocols" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/protocol/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/protocol/a2a.html">A2A</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/protocol/agui.html">AG-UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/protocol/agent-protocol.html">Agent Protocol</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/infrastructure/index.html">Infrastructure</a><input aria-label="Toggle navigation of Infrastructure" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/infrastructure/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/infrastructure/higress.html">Higress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/infrastructure/nacos.html">Nacos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/infrastructure/rocketmq.html">RocketMQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/infrastructure/scheduler.html">Scheduler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../en/integration/ecosystem/index.html">Ecosystem</a><input aria-label="Toggle navigation of Ecosystem" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/ecosystem/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/ecosystem/chat-completions-web.html">Chat Completions Web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../en/integration/ecosystem/kotlin.html">Kotlin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/ecosystem/studio.html">Studio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../en/integration/ecosystem/training.html">Online Training</a></li>
 </ul>
@@ -760,7 +770,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · 快速开始</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../change-log.html">更新日志</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">什么是 AgentScope 2.0？</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">快速上手</a></li>
 </ul>
@@ -772,11 +781,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../building-blocks/model.html">模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../building-blocks/permission-system.html">权限系统</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../building-blocks/tool.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building-blocks/context.html">上下文与 AgentState</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Harness</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">架构</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">上下文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compaction.html">上下文压缩</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">工作区</a></li>
 <li class="toctree-l1"><a class="reference internal" href="memory.html">记忆</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filesystem.html">文件系统</a></li>
@@ -784,9 +794,12 @@
 <li class="toctree-l1"><a class="reference internal" href="subagent.html">子 Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skill.html">技能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plan-mode.html">计划模式</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Channel</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · 参考</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../change-log.html">迁移指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/going-to-production.html">上生产</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/faq.html">常见问题</a></li>
 </ul>
@@ -794,17 +807,21 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/overview.html">概览</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/memory/index.html">记忆</a><input aria-label="Toggle navigation of 记忆" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/memory/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/memory/mem0.html">Mem0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/memory/bailian.html">百炼记忆</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/memory/reme.html">ReMe</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/session/index.html">会话</a><input aria-label="Toggle navigation of 会话" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/session/mysql.html">MySQL Session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/session/redis.html">Redis Session</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/session/index.html">Agent 状态存储</a><input aria-label="Toggle navigation of Agent 状态存储" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/overview.html">概览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/mysql.html">MySQL 状态存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/redis.html">Redis 状态存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/oss.html">OSS 状态存储</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/rag/index.html">RAG 知识库</a><input aria-label="Toggle navigation of RAG 知识库" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/rag/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/rag/simple.html">Simple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/rag/bailian.html">百炼知识库</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/rag/dify.html">Dify</a></li>
@@ -813,26 +830,29 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/skill/index.html">技能仓库</a><input aria-label="Toggle navigation of 技能仓库" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/skill/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/skill/git-repository.html">Git 技能仓库</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/skill/mysql-repository.html">MySQL 技能仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/skill/postgresql-repository.html">PostgreSQL 技能仓库</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/protocol/index.html">智能体协议</a><input aria-label="Toggle navigation of 智能体协议" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/a2a.html">A2A</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/agui.html">AG-UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/agent-protocol.html">Agent Protocol</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/infrastructure/index.html">基础设施</a><input aria-label="Toggle navigation of 基础设施" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/higress.html">Higress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/nacos.html">Nacos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/rocketmq.html">RocketMQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/scheduler.html">Scheduler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/ecosystem/index.html">生态扩展</a><input aria-label="Toggle navigation of 生态扩展" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/chat-completions-web.html">Chat Completions Web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/kotlin.html">Kotlin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/studio.html">Studio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/training.html">在线训练</a></li>
 </ul>
@@ -866,7 +886,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/agentscope-ai/agentscope-java/blob/master/docs/v2/zh/docs/harness/context.md?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/agentscope-ai/agentscope-java/blob/master/docs/v2/zh/docs/harness/channel.md?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -883,390 +903,299 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="id1">
-<h1>上下文与会话<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<p>HarnessAgent 在两条互相配合的链路上管理工作记忆:</p>
-<ol class="arabic simple">
-<li><p><strong>Session — 把 agent 的运行时状态持久化下来</strong>,让同一个 <code class="docutils literal notranslate"><span class="pre">sessionId</span></code> 能在不同进程、不同机器上接着上次执行。</p></li>
-<li><p><strong>Context 压缩 — 让对话上下文不至于把模型的 token 预算吃光</strong>,在不丢失关键信息的前提下尽量延长一次会话的有效寿命。</p></li>
-</ol>
-<p>两条链路通过同一个数据结构 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 串起来:压缩在内存里更新它,Session 把它落到外部存储。下面分两部分展开。</p>
-<hr class="docutils" />
-<section id="session-agent">
-<h2>一、Session:Agent 运行时状态的持久化<a class="headerlink" href="#session-agent" title="Link to this heading">¶</a></h2>
-<section id="session-agentstate">
-<h3>Session 装的是什么 —— AgentState<a class="headerlink" href="#session-agentstate" title="Link to this heading">¶</a></h3>
-<p>Session 持久化的是一份 <strong><code class="docutils literal notranslate"><span class="pre">AgentState</span></code></strong>(<code class="docutils literal notranslate"><span class="pre">io.agentscope.core.state.AgentState</span></code>),它是 agent 当前”瞬时”运行状态的完整快照:</p>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 字段</p></th>
-<th class="head"><p>内容</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getContext()</span></code> / <code class="docutils literal notranslate"><span class="pre">contextMutable()</span></code></p></td>
-<td><p>当前对话历史(用户输入、assistant 回复、工具调用、工具结果)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getSummary()</span></code></p></td>
-<td><p>压缩后的摘要(如果开了压缩)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getPermissionContext()</span></code></p></td>
-<td><p>工具权限规则,见<a class="reference internal" href="../building-blocks/permission-system.html"><span class="std std-doc">权限系统</span></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getPlanModeContext()</span></code></p></td>
-<td><p>Plan Mode 当前是否激活、计划文件路径</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getTasksContext()</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">todo_write</span></code> 维护的任务清单</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getToolContext()</span></code></p></td>
-<td><p>工具组激活状态(<code class="docutils literal notranslate"><span class="pre">activatedGroups</span></code>)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>一次 <code class="docutils literal notranslate"><span class="pre">call()</span></code> 结束,框架自动把整份 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 以 <code class="docutils literal notranslate"><span class="pre">agent_state</span></code> 这个键写进 Session。下次同 <code class="docutils literal notranslate"><span class="pre">sessionId</span></code> 的 <code class="docutils literal notranslate"><span class="pre">call()</span></code> 在构造 agent 时会优先从 Session 读回——<strong>只要 Session 后端是分布式的(例如 Redis),不同进程、不同物理机上的 agent 实例都能拿到完全一致的状态</strong>。</p>
+          <section id="channel">
+<h1>Channel<a class="headerlink" href="#channel" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>它们做什么<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p><strong>Gateway</strong> 位于你的应用代码和 agent 之间，负责：</p>
+<ul class="simple">
+<li><p><strong>会话管理</strong> — 把每个用户对话映射到稳定的 session id。agent 在跨轮次时看到一致的记忆。</p></li>
+<li><p><strong>Per-session 并发控制</strong> — 同一 session 的并发消息会公平排队，agent 不会和自己竞争。</p></li>
+<li><p><strong>Agent 路由</strong> — 在多 agent 场景下，把每条消息路由到正确的 agent。</p></li>
+</ul>
+<p><strong>Channel</strong> 把消息平台（HTTP、WebSocket、Slack 等）适配成 Gateway 的路由模型。它负责解析消息来源、选定目标 agent、以及把回复投递回去。</p>
+<p>大多数场景下你不需要直接和 Gateway 或 Channel 打交道——<code class="docutils literal notranslate"><span class="pre">agent.channel(...)</span></code> 会在后台自动完成所有接线。</p>
 </section>
 <section id="id2">
-<h3>自动持久化与恢复链路<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>agent 启动 ─► loadOrCreateAgentState(session, sessionKey)
-              │
-              ├─ Session 里有 agent_state ─► 直接还原
-              └─ 没有 ─► 构造一份空 AgentState
+<h2>快速开始<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;assistant&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">sysPrompt</span><span class="p">(</span><span class="s">&quot;你是一个有用的助手。&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="s">&quot;dashscope:qwen-plus&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 
-agent.call() 进行中 ─► 中间件就地改写 AgentState.contextMutable()
-                       (压缩、Plan、todo_write、权限调整……都在改它)
+<span class="c1">// 绑定一个 ChatUI channel。</span>
+<span class="n">ChatUiChannel</span><span class="w"> </span><span class="n">chat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agent</span><span class="p">.</span><span class="na">channel</span><span class="p">(</span><span class="n">ChatUiChannel</span><span class="p">.</span><span class="na">create</span><span class="p">());</span>
 
-进程退出 / interrupt ─► shutdownManager 触发
-                       session.save(sessionKey, &quot;agent_state&quot;, state)
+<span class="c1">// 发送消息。每个 userId 自动获得独立的 session。</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;你好！&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+
+<span class="c1">// 同一个用户，同一个 session——对话继续。</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">followUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;再多说一些。&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+
+<span class="c1">// 不同用户，不同 session。</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">otherUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-2&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;你好&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>这套机制是 <strong><code class="docutils literal notranslate"><span class="pre">ReActAgent</span></code> 自带</strong>的(<code class="docutils literal notranslate"><span class="pre">ReActAgent.java</span></code> 构造函数与 <code class="docutils literal notranslate"><span class="pre">shutdownManager.bindStateSaver</span></code>),<code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> 直接继承,无需额外配置。</p>
-<blockquote>
-<div><p>单次 <code class="docutils literal notranslate"><span class="pre">call()</span></code> 期间的中间状态变更靠的是内存里的 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 对象。<strong>Session 不在每条消息后落盘,而是在 call 结束 / shutdown 时整体写入</strong>——所以对 Session 后端的吞吐压力很低。</p>
-</div></blockquote>
-</section>
-<section id="id3">
-<h3>内置与扩展实现<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
-<p>只要实现 <code class="docutils literal notranslate"><span class="pre">io.agentscope.core.session.Session</span></code> 接口,任何后端都能接进来。选择哪一种,取决于你的部署形态:</p>
+<p><code class="docutils literal notranslate"><span class="pre">agent.channel(...)</span></code> 会懒加载创建内部 gateway，注册当前 agent，并把 gateway 注入到 channel 中。调用之后 <code class="docutils literal notranslate"><span class="pre">chat</span></code> 就可以直接使用了。</p>
+<section id="sendoptions">
+<h3>SendOptions<a class="headerlink" href="#sendoptions" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SendOptions</span></code> 告诉 channel <strong>谁</strong>在说话、这属于<strong>哪个对话</strong>：</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>实现</p></th>
-<th class="head"><p>模块</p></th>
-<th class="head"><p>适用场景</p></th>
+<tr class="row-odd"><th class="head"><p>工厂方法</p></th>
+<th class="head"><p>行为</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InMemorySession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-core</span></code></p></td>
-<td><p>单元测试 / 单进程演示;进程退出全部丢失</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SendOptions.userId(&quot;user-1&quot;)</span></code></p></td>
+<td><p>每个用户一个 session（最常用）</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">JsonSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-core</span></code></p></td>
-<td><p>单机开发、文件落盘即可恢复;不能跨节点共享</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SendOptions.of(&quot;user-1&quot;,</span> <span class="pre">&quot;session-a&quot;)</span></code></p></td>
+<td><p>指定 session——同一用户多个对话</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WorkspaceSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-harness</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> 默认值,基于 <code class="docutils literal notranslate"><span class="pre">JsonSession</span></code>,把状态写到 <code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/agents/&lt;agentId&gt;/context/&lt;sessionId&gt;/</span></code>;<strong>单机单租户</strong></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RedisSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-extensions-session-redis</span></code></p></td>
-<td><p><strong>生产首选</strong>,多副本共享;支持 Jedis / Lettuce / Redisson(Standalone / Cluster / Sentinel)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MysqlSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-extensions-session-mysql</span></code></p></td>
-<td><p>需要把会话数据沉淀进关系型库(审计、报表)时使用</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SendOptions.userId(&quot;user-1&quot;).withAgentId(&quot;support&quot;)</span></code></p></td>
+<td><p>在多 agent 场景下路由到指定 agent</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>切换非常简单——只在构造期 <code class="docutils literal notranslate"><span class="pre">.session(...)</span></code> 一次:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// 默认(单机):省略 .session(...) 即可,自动用 WorkspaceSession</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;MyAgent&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">workspace</span><span class="p">(</span><span class="n">workspace</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="c1">// 多副本生产:换成 RedisSession</span>
-<span class="n">RedisClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RedisClient</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;redis://redis.prod:6379&quot;</span><span class="p">);</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;MyAgent&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">workspace</span><span class="p">(</span><span class="n">workspace</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">session</span><span class="p">(</span><span class="n">RedisSession</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">lettuceClient</span><span class="p">(</span><span class="n">client</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// 同一用户，两个独立对话</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;session-a&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;话题 A&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;session-b&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;话题 B&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
 </pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">WorkspaceSession</span></code> 仅适合单机。如果你已经在用 <code class="docutils literal notranslate"><span class="pre">filesystem(SandboxFilesystemSpec)</span></code> 或 <code class="docutils literal notranslate"><span class="pre">filesystem(RemoteFilesystemSpec)</span></code>(分布式工作区),HarnessAgent 会<strong>强制要求</strong> Session 也换成分布式后端,否则 <code class="docutils literal notranslate"><span class="pre">build()</span></code> 直接抛 <code class="docutils literal notranslate"><span class="pre">IllegalStateException</span></code>——因为 sandbox 状态必须跨副本共享。</p>
 </div>
 </section>
-<section id="sessionid">
-<h3>同 sessionId 跨进程、跨机器实时恢复<a class="headerlink" href="#sessionid" title="Link to this heading">¶</a></h3>
-<p>只要 Session 后端是分布式的(例如 Redis),这一切就是<strong>自动</strong>的:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// 节点 A:开了一段对话</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agentA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">session</span><span class="p">(</span><span class="n">redisSession</span><span class="p">)</span>
-<span class="w">    </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="n">agentA</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;alice-2026-06-02-001&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
-
-<span class="c1">// 节点 B:不同物理机,完全独立的 JVM</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agentB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">session</span><span class="p">(</span><span class="n">redisSession</span><span class="p">)</span>
-<span class="w">    </span><span class="cm">/* 同一份 sessionId,同一份 sessionKey */</span><span class="w"> </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="c1">// 节点 B 第一次 call() 会自动从 Redis 拉到节点 A 之前留下的 AgentState</span>
-<span class="n">agentB</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">nextMsg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;alice-2026-06-02-001&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>这意味着:</p>
-<ul class="simple">
-<li><p><strong>故障转移</strong>:节点崩了,会话漂到另一个节点,用户感知不到。</p></li>
-<li><p><strong>滚动发布</strong>:旧 pod 退出前 <code class="docutils literal notranslate"><span class="pre">shutdownManager</span></code> 自动保存,新 pod 接到流量时自动从 Session 还原,<strong>对话不会断</strong>。</p></li>
-<li><p><strong>跨场景接续</strong>:在 Web UI 里和 agent 聊到一半,切换到 CLI 工具继续聊——只要 <code class="docutils literal notranslate"><span class="pre">sessionId</span></code> 一致,记忆都在。</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">SessionKey</span></code> 接口决定写入键的命名空间。默认 <code class="docutils literal notranslate"><span class="pre">SimpleSessionKey.of(sessionId)</span></code> 就够用;需要 <code class="docutils literal notranslate"><span class="pre">(tenantId,</span> <span class="pre">userId,</span> <span class="pre">agentId,</span> <span class="pre">sessionId)</span></code> 这种多维分桶时,实现自己的 <code class="docutils literal notranslate"><span class="pre">SessionKey</span></code>。</p>
 </section>
-<section id="id4">
-<h3>多用户隔离<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">sessionId</span></code> 和 <code class="docutils literal notranslate"><span class="pre">userId</span></code> 解决的不是同一件事:</p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">sessionId</span></code></strong> —— 决定哪段对话是哪段,独立的 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 快照。</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">userId</span></code></strong> —— 决定文件落到谁的命名空间下,详见<a class="reference internal" href="filesystem.html"><span class="doc std std-doc">文件系统</span></a>。</p></li>
-</ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">agent</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;alice-1&quot;</span><span class="p">).</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
-
-<span class="n">agent</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;bob-1&quot;</span><span class="p">).</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;bob&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
+<section id="sse">
+<h2>流式事件 + SSE<a class="headerlink" href="#sse" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sendStream()</span></code> 返回 <code class="docutils literal notranslate"><span class="pre">Flux&lt;AgentEvent&gt;</span></code>，和 <code class="docutils literal notranslate"><span class="pre">agent.streamEvents()</span></code> 一样的细粒度事件流，但经过 gateway 路由并带有会话管理。</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;北京今天天气怎么样？&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">doOnNext</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">ToolCallStartEvent</span><span class="w"> </span><span class="n">tc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;\n[tool] &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tc</span><span class="p">.</span><span class="na">getToolCallName</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="na">blockLast</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>两个用户的对话状态与文件路径互不干扰。生产部署如果想做 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 级别的用户隔离,首选把 <code class="docutils literal notranslate"><span class="pre">userId</span></code> 编码进 <code class="docutils literal notranslate"><span class="pre">SessionKey</span></code>(配合 <code class="docutils literal notranslate"><span class="pre">RedisSession</span></code> 时它就是 Redis key 的一部分),而不是依赖文件路径分桶。</p>
+<section id="spring-boot-sse-controller">
+<h3>Spring Boot SSE Controller<a class="headerlink" href="#spring-boot-sse-controller" title="Link to this heading">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/chat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="p">.</span><span class="na">TEXT_EVENT_STREAM_VALUE</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">ServerSentEvent</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sessionId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SendOptions</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="n">SendOptions</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">sessionId</span><span class="p">)</span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">                </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;type&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getType</span><span class="p">().</span><span class="na">name</span><span class="p">());</span>
+<span class="w">                </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;delta&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">SubagentExposedEvent</span><span class="w"> </span><span class="n">se</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;subagentId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getSubagentId</span><span class="p">());</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;agentId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getAgentId</span><span class="p">());</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;label&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getLabel</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">ServerSentEvent</span><span class="p">.</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="n">builder</span><span class="p">()</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">data</span><span class="p">(</span><span class="n">objectMapper</span><span class="p">.</span><span class="na">writeValueAsString</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
-<section id="agentstate">
-<h3>直接读写 AgentState<a class="headerlink" href="#agentstate" title="Link to this heading">¶</a></h3>
-<p>需要旁路操作(例如管理台、审计、批量迁移)时,可以直接拿:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.agentscope.core.state.AgentState</span><span class="p">;</span>
-
-<span class="n">AgentState</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agent</span><span class="p">.</span><span class="na">getAgentState</span><span class="p">();</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;messages: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">size</span><span class="p">());</span>
-
-<span class="n">String</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="na">toJson</span><span class="p">();</span>
-<span class="n">AgentState</span><span class="w"> </span><span class="n">restored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AgentState</span><span class="p">.</span><span class="na">fromJsonString</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>方法</p></th>
-<th class="head"><p>说明</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getContext()</span></code></p></td>
-<td><p>当前对话历史(不可变视图)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contextMutable()</span></code></p></td>
-<td><p>可写入视图,谨慎使用</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">setSummary(...)</span></code> / <code class="docutils literal notranslate"><span class="pre">getSummary()</span></code></p></td>
-<td><p>自定义压缩摘要(自行实现压缩 middleware 时用)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">toJson()</span></code> / <code class="docutils literal notranslate"><span class="pre">fromJsonString(String)</span></code></p></td>
-<td><p>序列化与反序列化</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>1.0 中的 <code class="docutils literal notranslate"><span class="pre">Memory</span></code> 接口(<code class="docutils literal notranslate"><span class="pre">InMemoryMemory</span></code> / <code class="docutils literal notranslate"><span class="pre">LongTermMemory</span></code> 等)在 2.0 已 <code class="docutils literal notranslate"><span class="pre">&#64;Deprecated(forRemoval</span> <span class="pre">=</span> <span class="pre">true)</span></code>。新代码请使用 <code class="docutils literal notranslate"><span class="pre">AgentState.getContext()</span></code> + <code class="docutils literal notranslate"><span class="pre">Session</span></code> —— <code class="docutils literal notranslate"><span class="pre">Memory</span></code> 仅作为源代码兼容层保留。</p>
-</div>
 </section>
 <section id="agent">
-<h3>用 agent 自己查历史会话<a class="headerlink" href="#agent" title="Link to this heading">¶</a></h3>
-<p>启用会话能力时(默认开),三个查询工具会自动注册,agent 自己就能调:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">session_list</span> <span class="pre">agentId=&quot;...&quot;</span></code> —— 列出某个 agent 的历史会话。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">session_history</span> <span class="pre">agentId=&quot;...&quot;</span> <span class="pre">sessionId=&quot;...&quot;</span> <span class="pre">lastN=20</span></code> —— 看某次会话最近 N 条消息。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">session_search</span> <span class="pre">query=&quot;...&quot;</span> <span class="pre">agentId=&quot;...&quot;</span></code> —— 在历史会话里关键词搜索。</p></li>
-</ul>
-<p>这些工具读的是<strong>永不压缩的对话日志</strong>(<code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/agents/&lt;agentId&gt;/sessions/&lt;sessionId&gt;.log.jsonl</span></code>),所以即使上下文已经被压缩成摘要,agent 也能查到原始消息。</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="context">
-<h2>二、Context 上下文压缩策略<a class="headerlink" href="#context" title="Link to this heading">¶</a></h2>
-<p>LLM 的 token 预算是有限的。一段对话越跑越长,要么主动压缩、要么撞到模型的硬上限报错。<code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> 内置了一整套压缩链路,默认是关的,按需 <code class="docutils literal notranslate"><span class="pre">.compaction(...)</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.toolResultEviction(...)</span></code> 开启。</p>
-<p><strong>核心规则</strong>:<strong>压缩在内存里更新 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code>,Session 在 call 结束时把更新后的 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 整体落盘</strong>——也就是说,压缩与持久化是两条独立但互相支撑的路径。压缩永远先于落盘,Session 永远拿到的是压缩后的版本。</p>
-<section id="harnessagent">
-<h3>HarnessAgent 内置的几种策略<a class="headerlink" href="#harnessagent" title="Link to this heading">¶</a></h3>
+<h2>与暴露的子 Agent 对话<a class="headerlink" href="#agent" title="Link to this heading">¶</a></h2>
+<p>当 agent 通过 <code class="docutils literal notranslate"><span class="pre">expose_to_user=true</span></code> spawn 子 agent 时，gateway 会把这个子 agent 暴露为用户可直接寻址的入口。一个 <code class="docutils literal notranslate"><span class="pre">SubagentExposedEvent</span></code> 会出现在 <code class="docutils literal notranslate"><span class="pre">sendStream()</span></code> 的事件流中，携带 <code class="docutils literal notranslate"><span class="pre">subagentId</span></code>。</p>
+<section id="id3">
+<h3>发现暴露的子 Agent<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subagentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AtomicReference</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;找一个研究员帮我调查 AI 趋势&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">doOnNext</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">SubagentExposedEvent</span><span class="w"> </span><span class="n">se</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">subagentId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">se</span><span class="p">.</span><span class="na">getSubagentId</span><span class="p">());</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;子 Agent 已暴露: id=%s agent=%s label=%s%n&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">se</span><span class="p">.</span><span class="na">getSubagentId</span><span class="p">(),</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getAgentId</span><span class="p">(),</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getLabel</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="na">blockLast</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">SubagentExposedEvent</span></code> 字段：</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>策略</p></th>
-<th class="head"><p>解决的问题</p></th>
-<th class="head"><p>触发时机</p></th>
-<th class="head"><p>中间件</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>对话摘要压缩</strong></p></td>
-<td><p>上下文太”深”——消息条数 / token 累计太多</p></td>
-<td><p>每次模型推理前</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CompactionMiddleware</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>大工具结果卸载</strong></p></td>
-<td><p>上下文太”宽”——单条工具结果体量过大</p></td>
-<td><p>工具执行后</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ToolResultEvictionMiddleware</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>上下文溢出兜底</strong></p></td>
-<td><p>真的撞到模型 <code class="docutils literal notranslate"><span class="pre">context_length_exceeded</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">call()</span></code> 抛错时</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">HarnessAgent.recoverFromOverflow</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>预压缩参数截断</strong></p></td>
-<td><p>工具调用参数(write_file 的内容)体量大但后期没人看</p></td>
-<td><p>摘要之前的轻量预处理</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CompactionConfig.TruncateArgsConfig</span></code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>四套策略<strong>正交,可以任意组合</strong>,默认全部不开。</p>
-</section>
-<section id="compactionmiddleware">
-<h3>1. 对话摘要压缩 (<code class="docutils literal notranslate"><span class="pre">CompactionMiddleware</span></code>)<a class="headerlink" href="#compactionmiddleware" title="Link to this heading">¶</a></h3>
-<p>按消息条数或估算 token 触发,把对话<strong>前缀</strong>用一次 LLM 调用压成结构化摘要,<strong>保留尾部 N 条最近消息原文</strong>,然后把 <code class="docutils literal notranslate"><span class="pre">[summary]</span> <span class="pre">+</span> <span class="pre">[recent</span> <span class="pre">tail]</span></code> 写回 <code class="docutils literal notranslate"><span class="pre">AgentState.contextMutable()</span></code>。</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">compaction</span><span class="p">(</span><span class="n">CompactionConfig</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">triggerMessages</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w">     </span><span class="c1">// 30 条触发</span>
-<span class="w">        </span><span class="p">.</span><span class="na">keepMessages</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w">        </span><span class="c1">// 压缩后保留最近 10 条原文</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>默认摘要 prompt 会把内容组织成 <code class="docutils literal notranslate"><span class="pre">SESSION</span> <span class="pre">INTENT</span> <span class="pre">/</span> <span class="pre">SUMMARY</span> <span class="pre">/</span> <span class="pre">ARTIFACTS</span> <span class="pre">/</span> <span class="pre">NEXT</span> <span class="pre">STEPS</span></code> 四个小节,适合工程/编排类 agent。完整字段表(<code class="docutils literal notranslate"><span class="pre">triggerTokens</span></code>、<code class="docutils literal notranslate"><span class="pre">keepTokens</span></code>、<code class="docutils literal notranslate"><span class="pre">flushBeforeCompact</span></code>、<code class="docutils literal notranslate"><span class="pre">offloadBeforeCompact</span></code>、<code class="docutils literal notranslate"><span class="pre">TruncateArgsConfig</span></code>)与摘要 prompt 模板在<a class="reference internal" href="#./memory#%E5%BC%80%E5%90%AF%E5%8E%8B%E7%BC%A9"><span class="xref myst">记忆</span></a>文档里有详细列表,这里不重复。</p>
-</section>
-<section id="toolresultevictionmiddleware">
-<h3>2. 大工具结果卸载 (<code class="docutils literal notranslate"><span class="pre">ToolResultEvictionMiddleware</span></code>)<a class="headerlink" href="#toolresultevictionmiddleware" title="Link to this heading">¶</a></h3>
-<p>跟摘要压缩独立。当某条工具结果文本超过阈值(默认 80K 字符 ≈ 20K tokens),把全文写到工作区某个目录,上下文里<strong>只保留首尾各约 2K 字符 + 一个 <code class="docutils literal notranslate"><span class="pre">read_file</span></code> 路径提示符</strong>。agent 想看全文就自己 <code class="docutils literal notranslate"><span class="pre">read_file</span></code>。</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">toolResultEviction</span><span class="p">(</span><span class="n">ToolResultEvictionConfig</span><span class="p">.</span><span class="na">defaults</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>默认排除 <code class="docutils literal notranslate"><span class="pre">read_file</span></code> / <code class="docutils literal notranslate"><span class="pre">write_file</span></code> / <code class="docutils literal notranslate"><span class="pre">edit_file</span></code> / <code class="docutils literal notranslate"><span class="pre">grep_files</span></code> / <code class="docutils literal notranslate"><span class="pre">glob_files</span></code> / <code class="docutils literal notranslate"><span class="pre">list_files</span></code> / <code class="docutils literal notranslate"><span class="pre">memory_*</span></code> / <code class="docutils literal notranslate"><span class="pre">session_search</span></code>——这些工具要么自带分页、要么返回值很小。<strong>Shell <code class="docutils literal notranslate"><span class="pre">execute</span></code> 默认不排除</strong>,因为命令输出可能非常大。</p>
-<p>详情见<a class="reference internal" href="#./memory#%E5%A4%A7%E5%B7%A5%E5%85%B7%E7%BB%93%E6%9E%9C%E5%8D%B8%E8%BD%BD"><span class="xref myst">记忆 - 大工具结果卸载</span></a>。</p>
-</section>
-<section id="id5">
-<h3>3. 上下文溢出兜底<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
-<p>如果模型直接返回 <code class="docutils literal notranslate"><span class="pre">context_length_exceeded</span></code> / <code class="docutils literal notranslate"><span class="pre">maximum</span> <span class="pre">context</span></code> / <code class="docutils literal notranslate"><span class="pre">token</span> <span class="pre">limit</span></code> 等错误,<code class="docutils literal notranslate"><span class="pre">HarnessAgent.recoverFromOverflow()</span></code> 会强制走一次 <code class="docutils literal notranslate"><span class="pre">triggerMessages=1</span></code> 的极端压缩,然后<strong>自动重试一次</strong>。前提是构造 agent 时配了 <code class="docutils literal notranslate"><span class="pre">.compaction(...)</span></code>,否则错误原样抛回上层。</p>
-<p>这条兜底链路无需额外配置:只要 <code class="docutils literal notranslate"><span class="pre">compaction</span></code> 开了,溢出恢复就自动开。</p>
-</section>
-<section id="id6">
-<h3>4. 预压缩参数截断 (可选)<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
-<p>在 LLM 摘要前,先做一遍<strong>不走 LLM</strong> 的字符串截断——<code class="docutils literal notranslate"><span class="pre">write_file</span></code>、<code class="docutils literal notranslate"><span class="pre">edit_file</span></code> 这类工具的入参体量大但事后没人再看:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">CompactionConfig</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">triggerMessages</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">truncateArgs</span><span class="p">(</span><span class="n">CompactionConfig</span><span class="p">.</span><span class="na">TruncateArgsConfig</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">maxArgLength</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">truncationText</span><span class="p">(</span><span class="s">&quot;... [truncated] ...&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>很多场景下,光这一步就能把触发摘要的频率压下来一大截,几乎零成本。</p>
-</section>
-<section id="memory">
-<h3>压缩与 Memory 的联动<a class="headerlink" href="#memory" title="Link to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">CompactionConfig.flushBeforeCompact</span></code>(默认 <code class="docutils literal notranslate"><span class="pre">true</span></code>)决定<strong>摘要发生前是否先把对话前缀里的事实抽取到长期记忆(Memory)中</strong>——这一步由 <code class="docutils literal notranslate"><span class="pre">MemoryFlushMiddleware</span></code> + <code class="docutils literal notranslate"><span class="pre">MemoryFlushManager</span></code> 完成,会读 <code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/MEMORY.md</span></code> 与 <code class="docutils literal notranslate"><span class="pre">memory/*.md</span></code>,把新事实增量写进去。等会儿摘要丢掉前缀消息时,信息不会随之消失——agent 仍可以通过 <code class="docutils literal notranslate"><span class="pre">memory_search</span></code> / <code class="docutils literal notranslate"><span class="pre">memory_get</span></code> 工具回头查。</p>
-<p>类似地,<code class="docutils literal notranslate"><span class="pre">offloadBeforeCompact</span></code>(默认 <code class="docutils literal notranslate"><span class="pre">true</span></code>)在摘要前把<strong>原始消息</strong>整段写到永不压缩的 <code class="docutils literal notranslate"><span class="pre">*.log.jsonl</span></code>,供 <code class="docutils literal notranslate"><span class="pre">session_search</span></code> 检索。</p>
-<blockquote>
-<div><p>Memory 子系统的完整工作机制——双层结构、后台维护任务(归档、合并)、记忆工具——见 <a class="reference internal" href="memory.html"><span class="doc std std-doc">记忆</span></a> 文档。压缩与 memory 是一对常常一起用的组件,但有各自独立的开关。</p>
-</div></blockquote>
-</section>
-<section id="id7">
-<h3>压缩不会触碰的内容<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ConversationCompactor</span></code> 只处理 <code class="docutils literal notranslate"><span class="pre">AgentState.contextMutable()</span></code> 里的<strong>对话消息列表</strong>。下面这些活在 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 其他字段里,<strong>完全不会被摘要压缩波及</strong>:</p>
-<ul class="simple">
-<li><p><strong>Plan Mode 状态</strong>(<code class="docutils literal notranslate"><span class="pre">AgentState.getPlanModeContext()</span></code>):是否在 plan 阶段、当前计划文件路径。计划文件本身在工作区 <code class="docutils literal notranslate"><span class="pre">plans/</span></code> 下,生命周期由 Plan Mode 自己管理。详见 <a class="reference internal" href="plan-mode.html"><span class="doc std std-doc">Plan Mode</span></a>。</p></li>
-<li><p><strong>子 agent 后台任务</strong>(<code class="docutils literal notranslate"><span class="pre">task_id</span></code>、状态、结果):住在 <code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/agents/&lt;parentAgentId&gt;/tasks/&lt;sessionId&gt;.json</span></code> 里,由 <code class="docutils literal notranslate"><span class="pre">TaskRepository</span></code> 单独维护;主 agent 下一轮推理前通过 system reminder 反向注入完成结果,<strong>不进入对话消息流</strong>,所以摘要也无从压缩。详见 <a class="reference internal" href="#./subagent#%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="xref myst">子 Agent - 异步任务的存储位置</span></a>。</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">todo_write</span></code> 任务清单</strong>(<code class="docutils literal notranslate"><span class="pre">AgentState.getTasksContext()</span></code>):独立字段,跟着 <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> 一起持久化,但不参与对话压缩。详见 <a class="reference internal" href="#./plan-mode#%E4%B8%8E-todo_write-%E7%9A%84%E5%8D%8F%E4%BD%9C"><span class="xref myst">Plan Mode - 与 <code class="docutils literal notranslate"><span class="pre">todo_write</span></code> 的协作</span></a>。</p></li>
-<li><p><strong>权限规则</strong>(<code class="docutils literal notranslate"><span class="pre">getPermissionContext()</span></code>):独立字段,自带持久化。</p></li>
-</ul>
-<p>这些组件各有自己的状态机和恢复机制,压缩通路对它们是透明的——你可以放心开启 <code class="docutils literal notranslate"><span class="pre">.compaction(...)</span></code> 而不用担心丢 plan / 丢未完成的后台 task。</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="runtimecontext-per-call">
-<h2>附:<code class="docutils literal notranslate"><span class="pre">RuntimeContext</span></code> —— per-call 元数据<a class="headerlink" href="#runtimecontext-per-call" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">RuntimeContext</span></code>(位于 <code class="docutils literal notranslate"><span class="pre">io.agentscope.core.agent</span></code>)是一个轻量容器,在 <code class="docutils literal notranslate"><span class="pre">agent.call(msgs,</span> <span class="pre">ctx)</span></code> 中传入,hook 与 tool 在本次调用期间共享。<strong>不持久化、不参与 Session</strong>。</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.agentscope.core.agent.RuntimeContext</span><span class="p">;</span>
-
-<span class="n">RuntimeContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;s-001&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;request_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;req-2026-06-01-abc&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">MyTenantInfo</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyTenantInfo</span><span class="p">(</span><span class="s">&quot;tenant-7&quot;</span><span class="p">))</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="n">Msg</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agent</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">UserMessage</span><span class="p">(</span><span class="s">&quot;Hi&quot;</span><span class="p">)),</span><span class="w"> </span><span class="n">ctx</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>可用字段:</p>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>方法</p></th>
+<tr class="row-odd"><th class="head"><p>字段</p></th>
 <th class="head"><p>说明</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getSessionId()</span></code> / <code class="docutils literal notranslate"><span class="pre">getUserId()</span></code> / <code class="docutils literal notranslate"><span class="pre">getSessionKey()</span></code></p></td>
-<td><p>内置字段,用于路由会话与租户</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subagentId</span></code></p></td>
+<td><p>用于向该子 agent 发消息的句柄</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get(String)</span></code> / <code class="docutils literal notranslate"><span class="pre">put(String,</span> <span class="pre">Object)</span></code></p></td>
-<td><p>字符串键存取</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agentId</span></code></p></td>
+<td><p>子 agent 类型（如 <code class="docutils literal notranslate"><span class="pre">&quot;researcher&quot;</span></code>）</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get(Class&lt;T&gt;)</span></code> / <code class="docutils literal notranslate"><span class="pre">put(Class&lt;T&gt;,</span> <span class="pre">T)</span></code></p></td>
-<td><p>按类型存取(typed singleton)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sessionId</span></code></p></td>
+<td><p>子 agent 的 session id</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getExtra()</span></code></p></td>
-<td><p>直接拿到字符串属性 map(可变视图)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RuntimeContext.empty()</span></code></p></td>
-<td><p>空上下文</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
+<td><p>可选的人类可读名称</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>Session 后端在 builder 时绑定,不能通过 RuntimeContext per-call 切换</strong>。要按用户隔离 Session,用 <code class="docutils literal notranslate"><span class="pre">userId</span></code> + <code class="docutils literal notranslate"><span class="pre">SessionKey</span></code>(或自定义 <code class="docutils literal notranslate"><span class="pre">keyPrefix</span></code>),不要试图给每次 call 传不同的 Session 实例。</p>
+</section>
+<section id="id4">
+<h3>向子 Agent 发消息<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>拿到 <code class="docutils literal notranslate"><span class="pre">subagentId</span></code> 之后，可以直接和子 agent 对话——完全绕过父 agent：</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// 非流式</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendToSubagent</span><span class="p">(</span><span class="n">subagentId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;重点关注 LLM agent&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+
+<span class="c1">// 流式</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">sendToSubagentStream</span><span class="p">(</span><span class="n">subagentId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;重点关注 LLM agent&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">doOnNext</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="na">blockLast</span><span class="p">();</span>
+</pre></div>
 </div>
 </section>
-<hr class="docutils" />
-<section id="id8">
-<h2>相关文档<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<section id="agent-sse">
+<h3>带子 Agent 支持的 SSE<a class="headerlink" href="#agent-sse" title="Link to this heading">¶</a></h3>
+<p>典型的 SSE controller 同时处理主 agent 和子 agent 消息：</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/chat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="p">.</span><span class="na">TEXT_EVENT_STREAM_VALUE</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">ServerSentEvent</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">subagentId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">AgentEvent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">events</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">subagentId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendToSubagentStream</span><span class="p">(</span><span class="n">subagentId</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="n">userId</span><span class="p">),</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">events</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">toSSE</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>客户端监听 <code class="docutils literal notranslate"><span class="pre">SUBAGENT_EXPOSED</span></code> 事件来渲染新的对话标签页，后续请求时把 <code class="docutils literal notranslate"><span class="pre">subagentId</span></code> 传回来即可。</p>
+</section>
+</section>
+<section id="harnessagent">
+<h2>多 HarnessAgent 路由<a class="headerlink" href="#harnessagent" title="Link to this heading">¶</a></h2>
+<p>如果有多个 <code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> 实例，使用 <code class="docutils literal notranslate"><span class="pre">GatewayBootstrap</span></code>：</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="w"> </span><span class="n">salesAgent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;sales&quot;</span><span class="p">).</span><span class="na">sysPrompt</span><span class="p">(</span><span class="s">&quot;你是一个销售助手。&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="s">&quot;dashscope:qwen-plus&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">supportAgent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;support&quot;</span><span class="p">).</span><span class="na">sysPrompt</span><span class="p">(</span><span class="s">&quot;你是一个客服 agent。&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="s">&quot;dashscope:qwen-plus&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">GatewayBootstrap</span><span class="w"> </span><span class="n">gw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatewayBootstrap</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;sales&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">salesAgent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;support&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">supportAgent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">mainAgent</span><span class="p">(</span><span class="s">&quot;sales&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">// 没有指定 agent 时的默认</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">ChatUiChannel</span><span class="w"> </span><span class="n">chat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="na">chatUiChannel</span><span class="p">();</span>
+</pre></div>
+</div>
+<section id="agentid">
+<h3>按 agentId 路由<a class="headerlink" href="#agentid" title="Link to this heading">¶</a></h3>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">SendOptions.withAgentId()</span></code> 把消息路由到指定 agent：</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// 路由到 sales（默认 main agent）</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;有什么产品？&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+
+<span class="c1">// 显式路由到 support</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">).</span><span class="na">withAgentId</span><span class="p">(</span><span class="s">&quot;support&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;账单问题&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="gatewaybootstrap-agent">
+<h3>GatewayBootstrap 下暴露子 Agent<a class="headerlink" href="#gatewaybootstrap-agent" title="Link to this heading">¶</a></h3>
+<p>要在 GatewayBootstrap 模式下启用 <code class="docutils literal notranslate"><span class="pre">expose_to_user</span></code>，需要把 gateway bridge 接到每个 agent 的子 agent 中间件上：</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">GatewayBootstrap</span><span class="w"> </span><span class="n">gw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatewayBootstrap</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;main&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mainAgent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="c1">// 接入 bridge，让 agent_spawn(expose_to_user=true) 生效。</span>
+<span class="n">SubagentGatewayBridge</span><span class="w"> </span><span class="n">bridge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="na">gatewayBridge</span><span class="p">();</span>
+<span class="c1">// 通过 setGatewayBridge() 传给 agent 的 SubagentsMiddleware。</span>
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">agent.channel(...)</span></code> 时，这个接线会自动完成。</p>
+</section>
+</section>
+<section id="id5">
+<h2>自定义 Channel<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>实现 <code class="docutils literal notranslate"><span class="pre">Channel</span></code> 接口来适配新的消息平台：</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MySlackChannel</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Channel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">channelId</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">ChannelConfig</span><span class="w"> </span><span class="nf">config</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">myConfig</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">Gateway</span><span class="w"> </span><span class="n">gateway</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gateway</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 连接 Slack */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">stop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* 断开连接 */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Mono</span><span class="o">&lt;</span><span class="n">Msg</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="n">InboundMessage</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RouteResult</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">router</span><span class="p">.</span><span class="na">resolveRoute</span><span class="p">(</span><span class="n">config</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">gateway</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">route</span><span class="p">.</span><span class="na">context</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">messages</span><span class="p">(),</span><span class="w"> </span><span class="n">route</span><span class="p">.</span><span class="na">outboundAddress</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 可选：流式分发</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">AgentEvent</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">dispatchStream</span><span class="p">(</span><span class="n">InboundMessage</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RouteResult</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">router</span><span class="p">.</span><span class="na">resolveRoute</span><span class="p">(</span><span class="n">config</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">gateway</span><span class="p">.</span><span class="na">runStream</span><span class="p">(</span><span class="n">route</span><span class="p">.</span><span class="na">context</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">messages</span><span class="p">(),</span><span class="w"> </span><span class="n">route</span><span class="p">.</span><span class="na">outboundAddress</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">GatewayBootstrap</span></code> 注册：</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">GatewayBootstrap</span><span class="w"> </span><span class="n">gw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatewayBootstrap</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;main&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">agent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">channel</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MySlackChannel</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">gw</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w">   </span><span class="c1">// 调用所有 channel 的 init() + start()</span>
+<span class="c1">// ...</span>
+<span class="n">gw</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span><span class="w">    </span><span class="c1">// 调用所有 channel 的 stop()</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>内置 Channel 适配器<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>AgentScope 提供了多个开箱即用的 Channel 适配器作为扩展模块：</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="architecture.html"><span class="doc std std-doc">架构</span></a> —— Context、Session、工作区在一次 call 内如何协作</p></li>
-<li><p><a class="reference internal" href="memory.html"><span class="doc std std-doc">记忆</span></a> —— 长期记忆、对话压缩的详细配置、大工具结果卸载、后台维护</p></li>
-<li><p><a class="reference internal" href="plan-mode.html"><span class="doc std std-doc">Plan Mode</span></a> —— plan 状态的独立持久化与恢复</p></li>
-<li><p><a class="reference internal" href="subagent.html"><span class="doc std std-doc">子 Agent</span></a> —— 后台任务的存储位置与跨节点恢复</p></li>
-<li><p><a class="reference internal" href="filesystem.html"><span class="doc std std-doc">文件系统</span></a> —— <code class="docutils literal notranslate"><span class="pre">userId</span></code> 多租户路径隔离</p></li>
-<li><p><a class="reference internal" href="../building-blocks/permission-system.html"><span class="std std-doc">权限系统</span></a> —— 权限规则的持久化</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/dingtalk.md"><span class="xref myst">钉钉</span></a> — Stream 协议（持久 WebSocket）</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/feishu.md"><span class="xref myst">飞书 / Lark</span></a> — 事件订阅回调</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/github.md"><span class="xref myst">GitHub</span></a> — Issue / PR 评论 webhook</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/gitlab.md"><span class="xref myst">GitLab</span></a> — Note hook</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/wecom.md"><span class="xref myst">企业微信</span></a> — 加密回调</p></li>
+</ul>
+<p>详见 <a class="reference internal" href="#../../../integration/channel/index.md"><span class="xref myst">Channel 适配器</span></a>集成总览。</p>
+</section>
+<section id="id7">
+<h2>相关文档<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="subagent.html"><span class="doc std std-doc">子 Agent</span></a> — 声明和 spawn 子 agent、后台任务、流式转发</p></li>
+<li><p><a class="reference internal" href="architecture.html"><span class="doc std std-doc">架构</span></a> — 主/子 agent 如何协作</p></li>
 </ul>
 </section>
 </section>
@@ -1295,23 +1224,23 @@ agent.call() 进行中 ─► 中间件就地改写 AgentState.contextMutable()
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="workspace.html">
+          <a class="next-page" href="../change-log.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">工作区（Workspace）</div>
+                <div class="title">V1 迁移指南</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="architecture.html">
+          <a class="prev-page" href="plan-mode.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Harness 架构</div>
+                <div class="title">计划模式（Plan Mode）</div>
                 
               </div>
             </a>
@@ -1324,7 +1253,7 @@ agent.call() 进行中 ─► 中间件就地改写 AgentState.contextMutable()
             Made with 
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-06-02</div>
+              Last updated on 2026-06-15</div>
           </div>
           <div class="right-details">
             <div class="icons">
@@ -1359,29 +1288,30 @@ agent.call() 进行中 ─► 中间件就地改写 AgentState.contextMutable()
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">上下文与会话</a><ul>
-<li><a class="reference internal" href="#session-agent">一、Session:Agent 运行时状态的持久化</a><ul>
-<li><a class="reference internal" href="#session-agentstate">Session 装的是什么 —— AgentState</a></li>
-<li><a class="reference internal" href="#id2">自动持久化与恢复链路</a></li>
-<li><a class="reference internal" href="#id3">内置与扩展实现</a></li>
-<li><a class="reference internal" href="#sessionid">同 sessionId 跨进程、跨机器实时恢复</a></li>
-<li><a class="reference internal" href="#id4">多用户隔离</a></li>
-<li><a class="reference internal" href="#agentstate">直接读写 AgentState</a></li>
-<li><a class="reference internal" href="#agent">用 agent 自己查历史会话</a></li>
+<li><a class="reference internal" href="#">Channel</a><ul>
+<li><a class="reference internal" href="#id1">它们做什么</a></li>
+<li><a class="reference internal" href="#id2">快速开始</a><ul>
+<li><a class="reference internal" href="#sendoptions">SendOptions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#context">二、Context 上下文压缩策略</a><ul>
-<li><a class="reference internal" href="#harnessagent">HarnessAgent 内置的几种策略</a></li>
-<li><a class="reference internal" href="#compactionmiddleware">1. 对话摘要压缩 (<code class="docutils literal notranslate"><span class="pre">CompactionMiddleware</span></code>)</a></li>
-<li><a class="reference internal" href="#toolresultevictionmiddleware">2. 大工具结果卸载 (<code class="docutils literal notranslate"><span class="pre">ToolResultEvictionMiddleware</span></code>)</a></li>
-<li><a class="reference internal" href="#id5">3. 上下文溢出兜底</a></li>
-<li><a class="reference internal" href="#id6">4. 预压缩参数截断 (可选)</a></li>
-<li><a class="reference internal" href="#memory">压缩与 Memory 的联动</a></li>
-<li><a class="reference internal" href="#id7">压缩不会触碰的内容</a></li>
+<li><a class="reference internal" href="#sse">流式事件 + SSE</a><ul>
+<li><a class="reference internal" href="#spring-boot-sse-controller">Spring Boot SSE Controller</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#runtimecontext-per-call">附:<code class="docutils literal notranslate"><span class="pre">RuntimeContext</span></code> —— per-call 元数据</a></li>
-<li><a class="reference internal" href="#id8">相关文档</a></li>
+<li><a class="reference internal" href="#agent">与暴露的子 Agent 对话</a><ul>
+<li><a class="reference internal" href="#id3">发现暴露的子 Agent</a></li>
+<li><a class="reference internal" href="#id4">向子 Agent 发消息</a></li>
+<li><a class="reference internal" href="#agent-sse">带子 Agent 支持的 SSE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#harnessagent">多 HarnessAgent 路由</a><ul>
+<li><a class="reference internal" href="#agentid">按 agentId 路由</a></li>
+<li><a class="reference internal" href="#gatewaybootstrap-agent">GatewayBootstrap 下暴露子 Agent</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">自定义 Channel</a></li>
+<li><a class="reference internal" href="#id6">内置 Channel 适配器</a></li>
+<li><a class="reference internal" href="#id7">相关文档</a></li>
 </ul>
 </li>
 </ul>

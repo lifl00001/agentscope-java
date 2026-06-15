@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="article:modified_time" content="2026-06-02T16:19:40+00:00" /><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="Workspace" href="workspace.html"><link rel="prev" title="Harness Architecture" href="architecture.html">
-        <link rel="canonical" href="https://java.agentscope.io/v2/en/docs/harness/context.html">
+    <meta property="article:modified_time" content="2026-06-15T03:10:40+00:00" /><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="V1 Migration Guide" href="../change-log.html"><link rel="prev" title="Plan Mode" href="plan-mode.html">
+        <link rel="canonical" href="https://java.agentscope.io/v2/en/docs/harness/channel.html">
         <link rel="prefetch" href="../../../../_static/logo.svg" as="image">
 
     <link rel="shortcut icon" href="../../../../_static/logo.svg"><!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
-        <title>Context &amp; Session - AgentScope Java</title>
+        <title>Channel - AgentScope Java</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=9c3e77be" />
@@ -88,7 +88,7 @@
   <nav
     class="docs-top-tabs"
     aria-label="Documentation sections"
-    data-current-page="v2/en/docs/harness/context"
+    data-current-page="v2/en/docs/harness/channel"
     data-current-lang="en"
     data-current-version="v2"
   >
@@ -672,7 +672,6 @@
 <p class="caption" role="heading"><span class="caption-text">v2 · Quick Start</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">What's AgentScope 2.0?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../change-log.html">Change Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quickstart</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Building Blocks</span></p>
@@ -683,11 +682,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../building-blocks/model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../building-blocks/permission-system.html">Permission System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../building-blocks/tool.html">Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building-blocks/context.html">Context &amp; AgentState</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Harness (English)</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compaction.html">Compaction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="memory.html">Memory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
@@ -695,9 +695,12 @@
 <li class="toctree-l1"><a class="reference internal" href="subagent.html">Subagent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skill.html">Skill</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plan-mode.html">Plan Mode</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Channel</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Reference</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../change-log.html">Migration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../others/release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/going-to-production.html">Going to Production</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../others/faq.html">FAQ</a></li>
 </ul>
@@ -705,17 +708,21 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../integration/overview.html">Overview</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/memory/index.html">Memory</a><input aria-label="Toggle navigation of Memory" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/memory/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/memory/mem0.html">Mem0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/memory/bailian.html">Bailian Memory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/memory/reme.html">ReMe</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/session/index.html">Session</a><input aria-label="Toggle navigation of Session" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/session/mysql.html">MySQL Session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/session/redis.html">Redis Session</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/session/index.html">Agent State Store</a><input aria-label="Toggle navigation of Agent State Store" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/mysql.html">MySQL State Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/redis.html">Redis State Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/session/oss.html">OSS State Store</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/rag/index.html">RAG Knowledge Base</a><input aria-label="Toggle navigation of RAG Knowledge Base" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/rag/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/rag/simple.html">Simple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/rag/bailian.html">Bailian Knowledge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/rag/dify.html">Dify</a></li>
@@ -724,26 +731,29 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/skill/index.html">Skill Repository</a><input aria-label="Toggle navigation of Skill Repository" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/skill/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/skill/git-repository.html">Git Skill Repository</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/skill/mysql-repository.html">MySQL Skill Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/skill/postgresql-repository.html">PostgreSQL Skill Repository</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/protocol/index.html">Agent Protocols</a><input aria-label="Toggle navigation of Agent Protocols" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/a2a.html">A2A</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/agui.html">AG-UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/protocol/agent-protocol.html">Agent Protocol</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/infrastructure/index.html">Infrastructure</a><input aria-label="Toggle navigation of Infrastructure" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/higress.html">Higress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/nacos.html">Nacos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/rocketmq.html">RocketMQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/infrastructure/scheduler.html">Scheduler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../integration/ecosystem/index.html">Ecosystem</a><input aria-label="Toggle navigation of Ecosystem" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/overview.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/chat-completions-web.html">Chat Completions Web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/kotlin.html">Kotlin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/studio.html">Studio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/ecosystem/training.html">Online Training</a></li>
 </ul>
@@ -760,7 +770,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · 快速开始</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/change-log.html">更新日志</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/index.html">什么是 AgentScope 2.0？</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/quickstart.html">快速上手</a></li>
 </ul>
@@ -772,11 +781,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/building-blocks/model.html">模型</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/building-blocks/permission-system.html">权限系统</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/building-blocks/tool.html">工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/building-blocks/context.html">上下文与 AgentState</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · Harness</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/architecture.html">架构</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/context.html">上下文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/compaction.html">上下文压缩</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/workspace.html">工作区</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/memory.html">记忆</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/filesystem.html">文件系统</a></li>
@@ -784,9 +794,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/subagent.html">子 Agent</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/skill.html">技能</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/plan-mode.html">计划模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/harness/channel.html">Channel</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">v2 · 参考</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/change-log.html">迁移指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/others/release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/others/going-to-production.html">上生产</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/docs/others/faq.html">常见问题</a></li>
 </ul>
@@ -794,17 +807,21 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../zh/integration/overview.html">概览</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/memory/index.html">记忆</a><input aria-label="Toggle navigation of 记忆" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/memory/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/memory/mem0.html">Mem0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/memory/bailian.html">百炼记忆</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/memory/reme.html">ReMe</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/session/index.html">会话</a><input aria-label="Toggle navigation of 会话" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/session/mysql.html">MySQL Session</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/session/redis.html">Redis Session</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/session/index.html">Agent 状态存储</a><input aria-label="Toggle navigation of Agent 状态存储" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/session/overview.html">概览</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/session/mysql.html">MySQL 状态存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/session/redis.html">Redis 状态存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/session/oss.html">OSS 状态存储</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/rag/index.html">RAG 知识库</a><input aria-label="Toggle navigation of RAG 知识库" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/rag/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/rag/simple.html">Simple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/rag/bailian.html">百炼知识库</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/rag/dify.html">Dify</a></li>
@@ -813,26 +830,29 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/skill/index.html">技能仓库</a><input aria-label="Toggle navigation of 技能仓库" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/skill/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/skill/git-repository.html">Git 技能仓库</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/skill/mysql-repository.html">MySQL 技能仓库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/skill/postgresql-repository.html">PostgreSQL 技能仓库</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/protocol/index.html">智能体协议</a><input aria-label="Toggle navigation of 智能体协议" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/protocol/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/protocol/a2a.html">A2A</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/protocol/agui.html">AG-UI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/protocol/agent-protocol.html">Agent Protocol</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/infrastructure/index.html">基础设施</a><input aria-label="Toggle navigation of 基础设施" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/infrastructure/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/infrastructure/higress.html">Higress</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/infrastructure/nacos.html">Nacos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/infrastructure/rocketmq.html">RocketMQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/infrastructure/scheduler.html">Scheduler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../zh/integration/ecosystem/index.html">生态扩展</a><input aria-label="Toggle navigation of 生态扩展" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/ecosystem/overview.html">概览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/ecosystem/chat-completions-web.html">Chat Completions Web</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/ecosystem/kotlin.html">Kotlin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/ecosystem/studio.html">Studio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../zh/integration/ecosystem/training.html">在线训练</a></li>
 </ul>
@@ -866,7 +886,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/agentscope-ai/agentscope-java/blob/master/docs/v2/en/docs/harness/context.md?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/agentscope-ai/agentscope-java/blob/master/docs/v2/en/docs/harness/channel.md?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -883,390 +903,299 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="context-session">
-<h1>Context &amp; Session<a class="headerlink" href="#context-session" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> manages working memory along two cooperating tracks:</p>
-<ol class="arabic simple">
-<li><p><strong>Session — persist agent runtime state</strong>, so the same <code class="docutils literal notranslate"><span class="pre">sessionId</span></code> can resume in another process or on another machine.</p></li>
-<li><p><strong>Context compaction — keep the conversation within the model’s token budget</strong>, without losing the information the agent still needs.</p></li>
-</ol>
-<p>Both tracks share one data structure: <code class="docutils literal notranslate"><span class="pre">AgentState</span></code>. Compaction mutates it in memory; Session writes it out at end of call. The two sections below cover each track in turn.</p>
-<hr class="docutils" />
-<section id="part-1-session-persistence-of-agent-runtime-state">
-<h2>Part 1: Session — persistence of agent runtime state<a class="headerlink" href="#part-1-session-persistence-of-agent-runtime-state" title="Link to this heading">¶</a></h2>
-<section id="what-session-stores-agentstate">
-<h3>What Session stores —— <code class="docutils literal notranslate"><span class="pre">AgentState</span></code><a class="headerlink" href="#what-session-stores-agentstate" title="Link to this heading">¶</a></h3>
-<p>Session persists an <strong><code class="docutils literal notranslate"><span class="pre">AgentState</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">io.agentscope.core.state.AgentState</span></code>) — a complete snapshot of everything that makes the agent restartable:</p>
+          <section id="channel">
+<h1>Channel<a class="headerlink" href="#channel" title="Link to this heading">¶</a></h1>
+<section id="what-they-do">
+<h2>What they do<a class="headerlink" href="#what-they-do" title="Link to this heading">¶</a></h2>
+<p><strong>Gateway</strong> sits between your application code and the agent. It handles:</p>
+<ul class="simple">
+<li><p><strong>Session management</strong> — maps each user conversation to a stable session id. The agent sees consistent memory across turns.</p></li>
+<li><p><strong>Per-session concurrency control</strong> — concurrent messages to the same session are queued fairly so the agent never races itself.</p></li>
+<li><p><strong>Agent routing</strong> — in multi-agent setups, routes each message to the right agent.</p></li>
+</ul>
+<p><strong>Channel</strong> adapts a messaging platform (HTTP, WebSocket, Slack, etc.) into the Gateway’s routing model. It resolves who sent the message, which agent should handle it, and where to deliver the reply.</p>
+<p>For most use cases you don’t interact with Gateway or Channel directly — <code class="docutils literal notranslate"><span class="pre">agent.channel(...)</span></code> wires everything up behind the scenes.</p>
+</section>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h2>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;assistant&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">sysPrompt</span><span class="p">(</span><span class="s">&quot;You are a helpful assistant.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="s">&quot;dashscope:qwen-plus&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="c1">// Bind a ChatUI channel.</span>
+<span class="n">ChatUiChannel</span><span class="w"> </span><span class="n">chat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agent</span><span class="p">.</span><span class="na">channel</span><span class="p">(</span><span class="n">ChatUiChannel</span><span class="p">.</span><span class="na">create</span><span class="p">());</span>
+
+<span class="c1">// Send messages. Each userId gets its own session automatically.</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+
+<span class="c1">// Same user, same session — conversation continues.</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">followUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Tell me more.&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+
+<span class="c1">// Different user, different session.</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">otherUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-2&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Hi there&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">agent.channel(...)</span></code> lazily creates an internal gateway, registers the agent, and injects the gateway into the channel. After this call, <code class="docutils literal notranslate"><span class="pre">chat</span></code> is ready to use.</p>
+<section id="sendoptions">
+<h3>SendOptions<a class="headerlink" href="#sendoptions" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SendOptions</span></code> tells the channel <strong>who</strong> is talking and <strong>which conversation</strong> this belongs to:</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">AgentState</span></code> field</p></th>
-<th class="head"><p>Content</p></th>
+<tr class="row-odd"><th class="head"><p>Factory</p></th>
+<th class="head"><p>Behavior</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getContext()</span></code> / <code class="docutils literal notranslate"><span class="pre">contextMutable()</span></code></p></td>
-<td><p>Current conversation history (user / assistant / tool calls / tool results)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SendOptions.userId(&quot;user-1&quot;)</span></code></p></td>
+<td><p>One session per user (most common)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getSummary()</span></code></p></td>
-<td><p>Compacted summary (when compaction is enabled)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SendOptions.of(&quot;user-1&quot;,</span> <span class="pre">&quot;session-a&quot;)</span></code></p></td>
+<td><p>Explicit session — multiple conversations per user</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getPermissionContext()</span></code></p></td>
-<td><p>Tool permission rules — see <a class="reference internal" href="../building-blocks/permission-system.html"><span class="std std-doc">Permissions</span></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getPlanModeContext()</span></code></p></td>
-<td><p>Whether Plan Mode is active, current plan file path</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getTasksContext()</span></code></p></td>
-<td><p>The <code class="docutils literal notranslate"><span class="pre">todo_write</span></code> task list</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getToolContext()</span></code></p></td>
-<td><p>Active toolkit groups (<code class="docutils literal notranslate"><span class="pre">activatedGroups</span></code>)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SendOptions.userId(&quot;user-1&quot;).withAgentId(&quot;support&quot;)</span></code></p></td>
+<td><p>Route to a specific agent in multi-agent setups</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>At the end of each <code class="docutils literal notranslate"><span class="pre">call()</span></code>, the framework writes the entire <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> to Session under the key <code class="docutils literal notranslate"><span class="pre">agent_state</span></code>. On construction, the next <code class="docutils literal notranslate"><span class="pre">call()</span></code> with the same <code class="docutils literal notranslate"><span class="pre">sessionId</span></code> loads it back automatically. <strong>Provided the Session backend is distributed (e.g. Redis), agent instances on different processes — even different physical machines — see identical state.</strong></p>
-</section>
-<section id="the-auto-persistence-and-recovery-flow">
-<h3>The auto-persistence and recovery flow<a class="headerlink" href="#the-auto-persistence-and-recovery-flow" title="Link to this heading">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>agent starts ─► loadOrCreateAgentState(session, sessionKey)
-                │
-                ├─ agent_state present in Session ─► restore it
-                └─ absent ─► construct fresh AgentState
-
-agent.call() running ─► middlewares mutate AgentState.contextMutable()
-                        (compaction, Plan, todo_write, permissions, …)
-
-process exits / interrupt ─► shutdownManager fires
-                             session.save(sessionKey, &quot;agent_state&quot;, state)
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Same user, two independent conversations</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;session-a&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Topic A&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;session-b&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Topic B&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>This wiring lives in <code class="docutils literal notranslate"><span class="pre">ReActAgent</span></code> itself (<code class="docutils literal notranslate"><span class="pre">loadOrCreateAgentState</span></code> + <code class="docutils literal notranslate"><span class="pre">shutdownManager.bindStateSaver</span></code>); <code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> inherits it for free.</p>
-<blockquote>
-<div><p>Mid-<code class="docutils literal notranslate"><span class="pre">call()</span></code> state changes happen against the in-memory <code class="docutils literal notranslate"><span class="pre">AgentState</span></code>. <strong>Session is written once per call (and on shutdown), not on every message</strong> — so the throughput pressure on your Session backend stays low.</p>
-</div></blockquote>
 </section>
-<section id="built-in-and-extension-implementations">
-<h3>Built-in and extension implementations<a class="headerlink" href="#built-in-and-extension-implementations" title="Link to this heading">¶</a></h3>
-<p>Anything implementing <code class="docutils literal notranslate"><span class="pre">io.agentscope.core.session.Session</span></code> works. Pick by deployment shape:</p>
+</section>
+<section id="streaming-events-sse">
+<h2>Streaming events + SSE<a class="headerlink" href="#streaming-events-sse" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">sendStream()</span></code> returns <code class="docutils literal notranslate"><span class="pre">Flux&lt;AgentEvent&gt;</span></code> — the same fine-grained event stream as <code class="docutils literal notranslate"><span class="pre">agent.streamEvents()</span></code>, but routed through the gateway with session management.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;What is the weather in Beijing?&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">doOnNext</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">ToolCallStartEvent</span><span class="w"> </span><span class="n">tc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;\n[tool] &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tc</span><span class="p">.</span><span class="na">getToolCallName</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="na">blockLast</span><span class="p">();</span>
+</pre></div>
+</div>
+<section id="spring-boot-sse-controller">
+<h3>Spring Boot SSE controller<a class="headerlink" href="#spring-boot-sse-controller" title="Link to this heading">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/chat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="p">.</span><span class="na">TEXT_EVENT_STREAM_VALUE</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">ServerSentEvent</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">sessionId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">SendOptions</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sessionId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">            </span><span class="o">?</span><span class="w"> </span><span class="n">SendOptions</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="n">sessionId</span><span class="p">)</span>
+<span class="w">            </span><span class="p">:</span><span class="w"> </span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">payload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">                </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;type&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getType</span><span class="p">().</span><span class="na">name</span><span class="p">());</span>
+<span class="w">                </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;delta&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">SubagentExposedEvent</span><span class="w"> </span><span class="n">se</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;subagentId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getSubagentId</span><span class="p">());</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;agentId&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getAgentId</span><span class="p">());</span>
+<span class="w">                    </span><span class="n">payload</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;label&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getLabel</span><span class="p">());</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">ServerSentEvent</span><span class="p">.</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="n">builder</span><span class="p">()</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">data</span><span class="p">(</span><span class="n">objectMapper</span><span class="p">.</span><span class="na">writeValueAsString</span><span class="p">(</span><span class="n">payload</span><span class="p">))</span>
+<span class="w">                        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="talking-to-exposed-subagents">
+<h2>Talking to exposed subagents<a class="headerlink" href="#talking-to-exposed-subagents" title="Link to this heading">¶</a></h2>
+<p>When the agent spawns a subagent with <code class="docutils literal notranslate"><span class="pre">expose_to_user=true</span></code>, the gateway exposes that subagent as a user-addressable entry point. A <code class="docutils literal notranslate"><span class="pre">SubagentExposedEvent</span></code> is emitted into the <code class="docutils literal notranslate"><span class="pre">sendStream()</span></code> event stream carrying the <code class="docutils literal notranslate"><span class="pre">subagentId</span></code>.</p>
+<section id="discovering-exposed-subagents">
+<h3>Discovering exposed subagents<a class="headerlink" href="#discovering-exposed-subagents" title="Link to this heading">¶</a></h3>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">AtomicReference</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subagentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AtomicReference</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+<span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Spawn a researcher to investigate AI trends&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">doOnNext</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">SubagentExposedEvent</span><span class="w"> </span><span class="n">se</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">subagentId</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">se</span><span class="p">.</span><span class="na">getSubagentId</span><span class="p">());</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;Subagent exposed: id=%s agent=%s label=%s%n&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">se</span><span class="p">.</span><span class="na">getSubagentId</span><span class="p">(),</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getAgentId</span><span class="p">(),</span><span class="w"> </span><span class="n">se</span><span class="p">.</span><span class="na">getLabel</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="na">blockLast</span><span class="p">();</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">SubagentExposedEvent</span></code> fields:</p>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Implementation</p></th>
-<th class="head"><p>Module</p></th>
-<th class="head"><p>Use case</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">InMemorySession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-core</span></code></p></td>
-<td><p>Unit tests / single-process demos; lost on exit</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">JsonSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-core</span></code></p></td>
-<td><p>Local dev with file persistence; not cross-node</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WorkspaceSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-harness</span></code></p></td>
-<td><p><strong><code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> default</strong>, built on <code class="docutils literal notranslate"><span class="pre">JsonSession</span></code>, writes under <code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/agents/&lt;agentId&gt;/context/&lt;sessionId&gt;/</span></code>; <strong>single-host single-tenant</strong></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">RedisSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-extensions-session-redis</span></code></p></td>
-<td><p><strong>Production default</strong> for multi-replica deployments; supports Jedis / Lettuce / Redisson (Standalone / Cluster / Sentinel)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MysqlSession</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">agentscope-extensions-session-mysql</span></code></p></td>
-<td><p>When session data needs to flow into a relational store (audit, reporting)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Switching is one call at builder time:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Default (single host) — omit .session(...); WorkspaceSession is used automatically</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;MyAgent&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">workspace</span><span class="p">(</span><span class="n">workspace</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="c1">// Production multi-replica — swap in RedisSession</span>
-<span class="n">RedisClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RedisClient</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;redis://redis.prod:6379&quot;</span><span class="p">);</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;MyAgent&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">workspace</span><span class="p">(</span><span class="n">workspace</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">session</span><span class="p">(</span><span class="n">RedisSession</span><span class="p">.</span><span class="na">builder</span><span class="p">().</span><span class="na">lettuceClient</span><span class="p">(</span><span class="n">client</span><span class="p">).</span><span class="na">build</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">WorkspaceSession</span></code> is single-host only. If you’ve already chosen <code class="docutils literal notranslate"><span class="pre">filesystem(SandboxFilesystemSpec)</span></code> or <code class="docutils literal notranslate"><span class="pre">filesystem(RemoteFilesystemSpec)</span></code> (distributed workspace), HarnessAgent <strong>rejects</strong> a <code class="docutils literal notranslate"><span class="pre">WorkspaceSession</span></code> at build time with <code class="docutils literal notranslate"><span class="pre">IllegalStateException</span></code> — sandbox state must be shared across replicas.</p>
-</div>
-</section>
-<section id="real-time-resume-across-processes-and-machines">
-<h3>Real-time resume across processes and machines<a class="headerlink" href="#real-time-resume-across-processes-and-machines" title="Link to this heading">¶</a></h3>
-<p>Once Session is distributed (e.g. Redis), cross-machine resume is <strong>automatic</strong>:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Node A — start a conversation</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agentA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">session</span><span class="p">(</span><span class="n">redisSession</span><span class="p">)</span>
-<span class="w">    </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-<span class="n">agentA</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;alice-2026-06-02-001&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
-
-<span class="c1">// Node B — different physical machine, separate JVM</span>
-<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">agentB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">session</span><span class="p">(</span><span class="n">redisSession</span><span class="p">)</span>
-<span class="w">    </span><span class="cm">/* same sessionId, same sessionKey */</span><span class="w"> </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="c1">// Node B&#39;s first call() loads the AgentState node A left in Redis</span>
-<span class="n">agentB</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">nextMsg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;alice-2026-06-02-001&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>This buys you:</p>
-<ul class="simple">
-<li><p><strong>Failover</strong>: a crashed node — conversations migrate to a healthy one, user notices nothing.</p></li>
-<li><p><strong>Rolling deploys</strong>: old pods save on shutdown, new pods load on first call — <strong>conversations never break across releases</strong>.</p></li>
-<li><p><strong>Cross-surface continuity</strong>: a user starts in the Web UI, switches to the CLI — same <code class="docutils literal notranslate"><span class="pre">sessionId</span></code>, all memory present.</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">SessionKey</span></code> defines the namespacing. <code class="docutils literal notranslate"><span class="pre">SimpleSessionKey.of(sessionId)</span></code> is enough for most cases; implement your own when you need <code class="docutils literal notranslate"><span class="pre">(tenantId,</span> <span class="pre">userId,</span> <span class="pre">agentId,</span> <span class="pre">sessionId)</span></code> keying.</p>
-</section>
-<section id="multi-user-isolation">
-<h3>Multi-user isolation<a class="headerlink" href="#multi-user-isolation" title="Link to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">sessionId</span></code> and <code class="docutils literal notranslate"><span class="pre">userId</span></code> solve different problems:</p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">sessionId</span></code></strong> — which conversation this is; independent <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> snapshot.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">userId</span></code></strong> — which user’s namespace files land in; see <a class="reference internal" href="filesystem.html"><span class="doc std std-doc">Filesystem</span></a>.</p></li>
-</ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">agent</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;alice-1&quot;</span><span class="p">).</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
-
-<span class="n">agent</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;bob-1&quot;</span><span class="p">).</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;bob&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">()).</span><span class="na">block</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>Two users — separate state, separate filesystem paths, no crosstalk. For <code class="docutils literal notranslate"><span class="pre">AgentState</span></code>-level user isolation in production, encode <code class="docutils literal notranslate"><span class="pre">userId</span></code> into <code class="docutils literal notranslate"><span class="pre">SessionKey</span></code> (with <code class="docutils literal notranslate"><span class="pre">RedisSession</span></code> it becomes part of the Redis key) rather than relying on filesystem path bucketing.</p>
-</section>
-<section id="reading-and-writing-agentstate-directly">
-<h3>Reading and writing <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> directly<a class="headerlink" href="#reading-and-writing-agentstate-directly" title="Link to this heading">¶</a></h3>
-<p>When you need to bypass the agent loop (admin console, audit, batch migration):</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.agentscope.core.state.AgentState</span><span class="p">;</span>
-
-<span class="n">AgentState</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agent</span><span class="p">.</span><span class="na">getAgentState</span><span class="p">();</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;messages: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="na">getContext</span><span class="p">().</span><span class="na">size</span><span class="p">());</span>
-
-<span class="n">String</span><span class="w"> </span><span class="n">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state</span><span class="p">.</span><span class="na">toJson</span><span class="p">();</span>
-<span class="n">AgentState</span><span class="w"> </span><span class="n">restored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AgentState</span><span class="p">.</span><span class="na">fromJsonString</span><span class="p">(</span><span class="n">json</span><span class="p">);</span>
-</pre></div>
-</div>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Method</p></th>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getContext()</span></code></p></td>
-<td><p>Current conversation history (immutable view)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subagentId</span></code></p></td>
+<td><p>Handle for sending messages to this subagent</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">contextMutable()</span></code></p></td>
-<td><p>Writable view, use with care</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">agentId</span></code></p></td>
+<td><p>Subagent type (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;researcher&quot;</span></code>)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">setSummary(...)</span></code> / <code class="docutils literal notranslate"><span class="pre">getSummary()</span></code></p></td>
-<td><p>Custom compaction summary (for your own compaction middleware)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sessionId</span></code></p></td>
+<td><p>Subagent’s session id</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">toJson()</span></code> / <code class="docutils literal notranslate"><span class="pre">fromJsonString(String)</span></code></p></td>
-<td><p>Serialize / deserialize</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The 1.0 <code class="docutils literal notranslate"><span class="pre">Memory</span></code> interface (<code class="docutils literal notranslate"><span class="pre">InMemoryMemory</span></code> / <code class="docutils literal notranslate"><span class="pre">LongTermMemory</span></code>, etc.) is <code class="docutils literal notranslate"><span class="pre">&#64;Deprecated(forRemoval</span> <span class="pre">=</span> <span class="pre">true)</span></code> in 2.0. New code should use <code class="docutils literal notranslate"><span class="pre">AgentState.getContext()</span></code> + <code class="docutils literal notranslate"><span class="pre">Session</span></code>; <code class="docutils literal notranslate"><span class="pre">Memory</span></code> remains only as a source-compat shim.</p>
-</div>
-</section>
-<section id="letting-the-agent-inspect-its-own-history">
-<h3>Letting the agent inspect its own history<a class="headerlink" href="#letting-the-agent-inspect-its-own-history" title="Link to this heading">¶</a></h3>
-<p>When session capability is on (the default), three query tools are registered automatically:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">session_list</span> <span class="pre">agentId=&quot;...&quot;</span></code> — list an agent’s historical sessions.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">session_history</span> <span class="pre">agentId=&quot;...&quot;</span> <span class="pre">sessionId=&quot;...&quot;</span> <span class="pre">lastN=20</span></code> — recent N messages of a session.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">session_search</span> <span class="pre">query=&quot;...&quot;</span> <span class="pre">agentId=&quot;...&quot;</span></code> — keyword search across history.</p></li>
-</ul>
-<p>These tools read the <strong>uncompressed conversation log</strong> (<code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/agents/&lt;agentId&gt;/sessions/&lt;sessionId&gt;.log.jsonl</span></code>), so even when the in-context conversation has been summarized, the agent can still pull up the original messages.</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="part-2-context-compaction-strategies">
-<h2>Part 2: Context compaction strategies<a class="headerlink" href="#part-2-context-compaction-strategies" title="Link to this heading">¶</a></h2>
-<p>The model’s token budget is finite. A long-running conversation either compacts proactively or eventually crashes into the model’s hard limit. <code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> ships a full compaction stack — opt-in via <code class="docutils literal notranslate"><span class="pre">.compaction(...)</span></code> / <code class="docutils literal notranslate"><span class="pre">.toolResultEviction(...)</span></code>.</p>
-<p><strong>Core invariant</strong>: <strong>compaction mutates <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> in memory; Session writes the updated <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> at end of call</strong>. Compaction and persistence are independent paths that always run in that order — Session sees the post-compaction state.</p>
-<section id="what-harnessagent-ships">
-<h3>What <code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> ships<a class="headerlink" href="#what-harnessagent-ships" title="Link to this heading">¶</a></h3>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Strategy</p></th>
-<th class="head"><p>What it solves</p></th>
-<th class="head"><p>When it fires</p></th>
-<th class="head"><p>Middleware</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Conversation summarization</strong></p></td>
-<td><p>Context too <em>deep</em> — message count / token total piles up</p></td>
-<td><p>Before each model reasoning call</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CompactionMiddleware</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Large tool-result eviction</strong></p></td>
-<td><p>Context too <em>wide</em> — a single tool result is huge</p></td>
-<td><p>After tool execution</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ToolResultEvictionMiddleware</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Overflow safety net</strong></p></td>
-<td><p>Model actually returned <code class="docutils literal notranslate"><span class="pre">context_length_exceeded</span></code></p></td>
-<td><p>When <code class="docutils literal notranslate"><span class="pre">call()</span></code> throws</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">HarnessAgent.recoverFromOverflow</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Pre-summary argument truncation</strong></p></td>
-<td><p>Tool-call args (e.g. <code class="docutils literal notranslate"><span class="pre">write_file</span></code> body) are big but nobody reads them later</p></td>
-<td><p>Lightweight pre-pass before summarization</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CompactionConfig.TruncateArgsConfig</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
+<td><p>Optional human-readable name</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>The four are <strong>orthogonal — combine them freely</strong>. All four are off by default.</p>
 </section>
-<section id="conversation-summarization-compactionmiddleware">
-<h3>1. Conversation summarization (<code class="docutils literal notranslate"><span class="pre">CompactionMiddleware</span></code>)<a class="headerlink" href="#conversation-summarization-compactionmiddleware" title="Link to this heading">¶</a></h3>
-<p>Triggers on message count or estimated token count. Distills the conversation <strong>prefix</strong> into a structured summary via one LLM call, <strong>keeps the last N messages verbatim</strong>, and writes <code class="docutils literal notranslate"><span class="pre">[summary]</span> <span class="pre">+</span> <span class="pre">[recent</span> <span class="pre">tail]</span></code> back into <code class="docutils literal notranslate"><span class="pre">AgentState.contextMutable()</span></code>.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">compaction</span><span class="p">(</span><span class="n">CompactionConfig</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">triggerMessages</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w">     </span><span class="c1">// fire at 30 messages</span>
-<span class="w">        </span><span class="p">.</span><span class="na">keepMessages</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w">        </span><span class="c1">// keep last 10 verbatim</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>The default summary prompt organizes content into <code class="docutils literal notranslate"><span class="pre">SESSION</span> <span class="pre">INTENT</span> <span class="pre">/</span> <span class="pre">SUMMARY</span> <span class="pre">/</span> <span class="pre">ARTIFACTS</span> <span class="pre">/</span> <span class="pre">NEXT</span> <span class="pre">STEPS</span></code> — works well for engineering/orchestration agents. The full configuration surface (<code class="docutils literal notranslate"><span class="pre">triggerTokens</span></code>, <code class="docutils literal notranslate"><span class="pre">keepTokens</span></code>, <code class="docutils literal notranslate"><span class="pre">flushBeforeCompact</span></code>, <code class="docutils literal notranslate"><span class="pre">offloadBeforeCompact</span></code>, <code class="docutils literal notranslate"><span class="pre">TruncateArgsConfig</span></code>) and the summary prompt template are in <a class="reference internal" href="#./memory#enable-compaction"><span class="xref myst">Memory — Enable compaction</span></a>; not duplicated here.</p>
-</section>
-<section id="large-tool-result-eviction-toolresultevictionmiddleware">
-<h3>2. Large tool-result eviction (<code class="docutils literal notranslate"><span class="pre">ToolResultEvictionMiddleware</span></code>)<a class="headerlink" href="#large-tool-result-eviction-toolresultevictionmiddleware" title="Link to this heading">¶</a></h3>
-<p>Independent of summarization. When a tool result exceeds the threshold (default 80K chars ≈ 20K tokens), the full output is written to a workspace directory and <strong>the in-context message is replaced with a head + tail preview (~2K chars each) plus a <code class="docutils literal notranslate"><span class="pre">read_file</span></code> pointer</strong>. The agent reads the full version on demand.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">toolResultEviction</span><span class="p">(</span><span class="n">ToolResultEvictionConfig</span><span class="p">.</span><span class="na">defaults</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">read_file</span></code> / <code class="docutils literal notranslate"><span class="pre">write_file</span></code> / <code class="docutils literal notranslate"><span class="pre">edit_file</span></code> / <code class="docutils literal notranslate"><span class="pre">grep_files</span></code> / <code class="docutils literal notranslate"><span class="pre">glob_files</span></code> / <code class="docutils literal notranslate"><span class="pre">list_files</span></code> / <code class="docutils literal notranslate"><span class="pre">memory_*</span></code> / <code class="docutils literal notranslate"><span class="pre">session_search</span></code> are excluded by default — they either self-paginate or return tiny payloads. <strong>Shell <code class="docutils literal notranslate"><span class="pre">execute</span></code> is deliberately NOT excluded</strong> because command output can be arbitrarily large.</p>
-<p>Details in <a class="reference internal" href="#./memory#large-tool-result-offloading"><span class="xref myst">Memory — Large tool-result offloading</span></a>.</p>
-</section>
-<section id="overflow-safety-net">
-<h3>3. Overflow safety net<a class="headerlink" href="#overflow-safety-net" title="Link to this heading">¶</a></h3>
-<p>If the model returns <code class="docutils literal notranslate"><span class="pre">context_length_exceeded</span></code> / <code class="docutils literal notranslate"><span class="pre">maximum</span> <span class="pre">context</span></code> / <code class="docutils literal notranslate"><span class="pre">token</span> <span class="pre">limit</span></code> errors, <code class="docutils literal notranslate"><span class="pre">HarnessAgent.recoverFromOverflow()</span></code> runs a forced <code class="docutils literal notranslate"><span class="pre">triggerMessages=1</span></code> extreme compaction and <strong>automatically retries once</strong>. Requires <code class="docutils literal notranslate"><span class="pre">.compaction(...)</span></code> to be configured at build time — otherwise the error propagates.</p>
-<p>No extra configuration: turn on compaction, and overflow recovery comes along.</p>
-</section>
-<section id="pre-summary-argument-truncation-optional">
-<h3>4. Pre-summary argument truncation (optional)<a class="headerlink" href="#pre-summary-argument-truncation-optional" title="Link to this heading">¶</a></h3>
-<p>Before the LLM summary pass, a <strong>non-LLM</strong> string-truncation pass clips oversized tool-call args (<code class="docutils literal notranslate"><span class="pre">write_file</span></code>, <code class="docutils literal notranslate"><span class="pre">edit_file</span></code> bodies):</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">CompactionConfig</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">    </span><span class="p">.</span><span class="na">triggerMessages</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
-<span class="w">    </span><span class="p">.</span><span class="na">truncateArgs</span><span class="p">(</span><span class="n">CompactionConfig</span><span class="p">.</span><span class="na">TruncateArgsConfig</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">maxArgLength</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">truncationText</span><span class="p">(</span><span class="s">&quot;... [truncated] ...&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">())</span>
-<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-</pre></div>
-</div>
-<p>In many workloads this single step delays the summarization trigger considerably at near-zero cost.</p>
-</section>
-<section id="coordination-with-memory">
-<h3>Coordination with Memory<a class="headerlink" href="#coordination-with-memory" title="Link to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">CompactionConfig.flushBeforeCompact</span></code> (default <code class="docutils literal notranslate"><span class="pre">true</span></code>) decides <strong>whether to extract facts from the conversation prefix into long-term memory before summarizing</strong> — handled by <code class="docutils literal notranslate"><span class="pre">MemoryFlushMiddleware</span></code> + <code class="docutils literal notranslate"><span class="pre">MemoryFlushManager</span></code>, which read <code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/MEMORY.md</span></code> and <code class="docutils literal notranslate"><span class="pre">memory/*.md</span></code> and incrementally append new facts. Once summarization drops the prefix messages, the information persists: the agent can pull it back via <code class="docutils literal notranslate"><span class="pre">memory_search</span></code> / <code class="docutils literal notranslate"><span class="pre">memory_get</span></code>.</p>
-<p>Similarly, <code class="docutils literal notranslate"><span class="pre">offloadBeforeCompact</span></code> (default <code class="docutils literal notranslate"><span class="pre">true</span></code>) writes the <strong>raw messages</strong> to the uncompressed <code class="docutils literal notranslate"><span class="pre">*.log.jsonl</span></code> before summarization, so <code class="docutils literal notranslate"><span class="pre">session_search</span></code> can still reach them.</p>
-<blockquote>
-<div><p>The full Memory subsystem — two-tier structure, background maintenance (archive, merge), memory tools — is in <a class="reference internal" href="memory.html"><span class="doc std std-doc">Memory</span></a>. Compaction and memory are commonly used together but have independent switches.</p>
-</div></blockquote>
-</section>
-<section id="what-compaction-does-not-touch">
-<h3>What compaction does <em>not</em> touch<a class="headerlink" href="#what-compaction-does-not-touch" title="Link to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ConversationCompactor</span></code> only operates on the <strong>conversation message list</strong> in <code class="docutils literal notranslate"><span class="pre">AgentState.contextMutable()</span></code>. The following live in other <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> fields and <strong>stay untouched by summarization</strong>:</p>
-<ul class="simple">
-<li><p><strong>Plan Mode state</strong> (<code class="docutils literal notranslate"><span class="pre">AgentState.getPlanModeContext()</span></code>): whether plan mode is active, current plan file path. The plan file itself lives under <code class="docutils literal notranslate"><span class="pre">plans/</span></code> in the workspace and is managed by Plan Mode’s own lifecycle. See <a class="reference internal" href="plan-mode.html"><span class="doc std std-doc">Plan Mode</span></a>.</p></li>
-<li><p><strong>Subagent background tasks</strong> (<code class="docutils literal notranslate"><span class="pre">task_id</span></code>, status, result): stored at <code class="docutils literal notranslate"><span class="pre">&lt;workspace&gt;/agents/&lt;parentAgentId&gt;/tasks/&lt;sessionId&gt;.json</span></code>, managed by <code class="docutils literal notranslate"><span class="pre">TaskRepository</span></code>; completed results are injected back into the parent via a system reminder on the next reasoning turn — they <strong>do not enter the conversation message stream</strong>, so summarization can’t touch them. See <a class="reference internal" href="#./subagent#background-task-storage"><span class="xref myst">Subagent — Background task storage</span></a>.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">todo_write</span></code> task list</strong> (<code class="docutils literal notranslate"><span class="pre">AgentState.getTasksContext()</span></code>): independent field, persisted with <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> but not in the compaction path. See <a class="reference internal" href="#./plan-mode#interaction-with-todo_write"><span class="xref myst">Plan Mode — Interaction with <code class="docutils literal notranslate"><span class="pre">todo_write</span></code></span></a>.</p></li>
-<li><p><strong>Permission rules</strong> (<code class="docutils literal notranslate"><span class="pre">getPermissionContext()</span></code>): independent field, self-persisting.</p></li>
-</ul>
-<p>Each of these owns its own state machine and recovery path; the compaction track is transparent to them — you can enable <code class="docutils literal notranslate"><span class="pre">.compaction(...)</span></code> without worrying about losing a plan or an in-flight background task.</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="appendix-runtimecontext-per-call-metadata">
-<h2>Appendix: <code class="docutils literal notranslate"><span class="pre">RuntimeContext</span></code> — per-call metadata<a class="headerlink" href="#appendix-runtimecontext-per-call-metadata" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">RuntimeContext</span></code> (in <code class="docutils literal notranslate"><span class="pre">io.agentscope.core.agent</span></code>) is a lightweight per-call carrier passed to <code class="docutils literal notranslate"><span class="pre">agent.call(msgs,</span> <span class="pre">ctx)</span></code>; hooks and tools share it for the duration of one call. <strong>Not persisted. Does not participate in Session.</strong></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io.agentscope.core.agent.RuntimeContext</span><span class="p">;</span>
+<section id="sending-messages-to-subagents">
+<h3>Sending messages to subagents<a class="headerlink" href="#sending-messages-to-subagents" title="Link to this heading">¶</a></h3>
+<p>Once you have a <code class="docutils literal notranslate"><span class="pre">subagentId</span></code>, send messages directly to the subagent — bypassing the parent agent entirely:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Non-streaming</span>
+<span class="n">Msg</span><span class="w"> </span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendToSubagent</span><span class="p">(</span><span class="n">subagentId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Focus on LLM agents&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
 
-<span class="n">RuntimeContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RuntimeContext</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
-<span class="w">        </span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;alice&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">sessionId</span><span class="p">(</span><span class="s">&quot;s-001&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;request_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;req-2026-06-01-abc&quot;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">MyTenantInfo</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyTenantInfo</span><span class="p">(</span><span class="s">&quot;tenant-7&quot;</span><span class="p">))</span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
-
-<span class="n">Msg</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agent</span><span class="p">.</span><span class="na">call</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">UserMessage</span><span class="p">(</span><span class="s">&quot;Hi&quot;</span><span class="p">)),</span><span class="w"> </span><span class="n">ctx</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+<span class="c1">// Streaming</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">sendToSubagentStream</span><span class="p">(</span><span class="n">subagentId</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Focus on LLM agents&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">doOnNext</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">TextBlockDeltaEvent</span><span class="w"> </span><span class="n">delta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">delta</span><span class="p">.</span><span class="na">getDelta</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="na">blockLast</span><span class="p">();</span>
 </pre></div>
 </div>
-<p>Available accessors:</p>
-<div class="table-wrapper colwidths-auto docutils container">
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Method</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getSessionId()</span></code> / <code class="docutils literal notranslate"><span class="pre">getUserId()</span></code> / <code class="docutils literal notranslate"><span class="pre">getSessionKey()</span></code></p></td>
-<td><p>Built-in fields used to route session and tenant</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get(String)</span></code> / <code class="docutils literal notranslate"><span class="pre">put(String,</span> <span class="pre">Object)</span></code></p></td>
-<td><p>String-keyed get/put</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get(Class&lt;T&gt;)</span></code> / <code class="docutils literal notranslate"><span class="pre">put(Class&lt;T&gt;,</span> <span class="pre">T)</span></code></p></td>
-<td><p>Typed singleton get/put</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getExtra()</span></code></p></td>
-<td><p>Direct access to the string-attribute map (mutable view)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">RuntimeContext.empty()</span></code></p></td>
-<td><p>Empty context</p></td>
-</tr>
-</tbody>
-</table>
+</section>
+<section id="sse-with-subagent-support">
+<h3>SSE with subagent support<a class="headerlink" href="#sse-with-subagent-support" title="Link to this heading">¶</a></h3>
+<p>A typical SSE controller handles both main-agent and subagent messages:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nd">@GetMapping</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;/chat&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">produces</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MediaType</span><span class="p">.</span><span class="na">TEXT_EVENT_STREAM_VALUE</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">ServerSentEvent</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">chat</span><span class="p">(</span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+<span class="w">                                          </span><span class="nd">@RequestParam</span><span class="p">(</span><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">subagentId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">AgentEvent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">events</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">subagentId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendToSubagentStream</span><span class="p">(</span><span class="n">subagentId</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chat</span><span class="p">.</span><span class="na">sendStream</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="n">userId</span><span class="p">),</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">events</span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">toSSE</span><span class="p">(</span><span class="n">event</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p><strong>The Session backend is bound at builder time and cannot be switched per call via <code class="docutils literal notranslate"><span class="pre">RuntimeContext</span></code>.</strong> For per-user Session isolation, use <code class="docutils literal notranslate"><span class="pre">userId</span></code> + <code class="docutils literal notranslate"><span class="pre">SessionKey</span></code> (or a custom <code class="docutils literal notranslate"><span class="pre">keyPrefix</span></code>); do not try to hand each call a different Session instance.</p>
+<p>The client watches for <code class="docutils literal notranslate"><span class="pre">SUBAGENT_EXPOSED</span></code> events to render new conversation tabs, and passes the <code class="docutils literal notranslate"><span class="pre">subagentId</span></code> back on subsequent requests.</p>
+</section>
+</section>
+<section id="multi-agent-routing">
+<h2>Multi-agent routing<a class="headerlink" href="#multi-agent-routing" title="Link to this heading">¶</a></h2>
+<p>For scenarios with multiple <code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> instances, use <code class="docutils literal notranslate"><span class="pre">GatewayBootstrap</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">HarnessAgent</span><span class="w"> </span><span class="n">salesAgent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;sales&quot;</span><span class="p">).</span><span class="na">sysPrompt</span><span class="p">(</span><span class="s">&quot;You are a sales assistant.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="s">&quot;dashscope:qwen-plus&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">HarnessAgent</span><span class="w"> </span><span class="n">supportAgent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HarnessAgent</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">name</span><span class="p">(</span><span class="s">&quot;support&quot;</span><span class="p">).</span><span class="na">sysPrompt</span><span class="p">(</span><span class="s">&quot;You are a support agent.&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">model</span><span class="p">(</span><span class="s">&quot;dashscope:qwen-plus&quot;</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">GatewayBootstrap</span><span class="w"> </span><span class="n">gw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatewayBootstrap</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;sales&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">salesAgent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;support&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">supportAgent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">mainAgent</span><span class="p">(</span><span class="s">&quot;sales&quot;</span><span class="p">)</span><span class="w">          </span><span class="c1">// default when no agent is specified</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">ChatUiChannel</span><span class="w"> </span><span class="n">chat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="na">chatUiChannel</span><span class="p">();</span>
+</pre></div>
+</div>
+<section id="routing-by-agentid">
+<h3>Routing by agentId<a class="headerlink" href="#routing-by-agentid" title="Link to this heading">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">SendOptions.withAgentId()</span></code> to route a message to a specific agent:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Routes to sales (the default main agent)</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;What products?&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+
+<span class="c1">// Routes to support explicitly</span>
+<span class="n">chat</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">SendOptions</span><span class="p">.</span><span class="na">userId</span><span class="p">(</span><span class="s">&quot;user-1&quot;</span><span class="p">).</span><span class="na">withAgentId</span><span class="p">(</span><span class="s">&quot;support&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Billing issue&quot;</span><span class="p">).</span><span class="na">block</span><span class="p">();</span>
+</pre></div>
 </div>
 </section>
-<hr class="docutils" />
+<section id="thread-exposure-with-gatewaybootstrap">
+<h3>Thread exposure with GatewayBootstrap<a class="headerlink" href="#thread-exposure-with-gatewaybootstrap" title="Link to this heading">¶</a></h3>
+<p>To enable <code class="docutils literal notranslate"><span class="pre">expose_to_user</span></code> on subagents, wire the gateway bridge into each agent’s subagent middleware:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">GatewayBootstrap</span><span class="w"> </span><span class="n">gw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatewayBootstrap</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;main&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mainAgent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="c1">// Wire the bridge so agent_spawn(expose_to_user=true) works.</span>
+<span class="n">SubagentGatewayBridge</span><span class="w"> </span><span class="n">bridge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gw</span><span class="p">.</span><span class="na">gatewayBridge</span><span class="p">();</span>
+<span class="c1">// Pass bridge to the agent&#39;s SubagentsMiddleware via setGatewayBridge().</span>
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">agent.channel(...)</span></code>, this wiring happens automatically.</p>
+</section>
+</section>
+<section id="custom-channel">
+<h2>Custom Channel<a class="headerlink" href="#custom-channel" title="Link to this heading">¶</a></h2>
+<p>Implement the <code class="docutils literal notranslate"><span class="pre">Channel</span></code> interface to adapt a new messaging platform:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MySlackChannel</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Channel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">channelId</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;slack&quot;</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">ChannelConfig</span><span class="w"> </span><span class="nf">config</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">myConfig</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">Gateway</span><span class="w"> </span><span class="n">gateway</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gateway</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">start</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* connect to Slack */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">stop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* disconnect */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Mono</span><span class="o">&lt;</span><span class="n">Msg</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">dispatch</span><span class="p">(</span><span class="n">InboundMessage</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RouteResult</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">router</span><span class="p">.</span><span class="na">resolveRoute</span><span class="p">(</span><span class="n">config</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">gateway</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">route</span><span class="p">.</span><span class="na">context</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">messages</span><span class="p">(),</span><span class="w"> </span><span class="n">route</span><span class="p">.</span><span class="na">outboundAddress</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Optional: streaming dispatch</span>
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Flux</span><span class="o">&lt;</span><span class="n">AgentEvent</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">dispatchStream</span><span class="p">(</span><span class="n">InboundMessage</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">RouteResult</span><span class="w"> </span><span class="n">route</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">router</span><span class="p">.</span><span class="na">resolveRoute</span><span class="p">(</span><span class="n">config</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">gateway</span><span class="p">.</span><span class="na">runStream</span><span class="p">(</span><span class="n">route</span><span class="p">.</span><span class="na">context</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">messages</span><span class="p">(),</span><span class="w"> </span><span class="n">route</span><span class="p">.</span><span class="na">outboundAddress</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Register it with <code class="docutils literal notranslate"><span class="pre">GatewayBootstrap</span></code>:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">GatewayBootstrap</span><span class="w"> </span><span class="n">gw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatewayBootstrap</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
+<span class="w">    </span><span class="p">.</span><span class="na">agent</span><span class="p">(</span><span class="s">&quot;main&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">agent</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">channel</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MySlackChannel</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+
+<span class="n">gw</span><span class="p">.</span><span class="na">start</span><span class="p">();</span><span class="w">   </span><span class="c1">// calls init() + start() on all channels</span>
+<span class="c1">// ...</span>
+<span class="n">gw</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span><span class="w">    </span><span class="c1">// calls stop() on all channels</span>
+</pre></div>
+</div>
+</section>
+<section id="built-in-channel-adapters">
+<h2>Built-in channel adapters<a class="headerlink" href="#built-in-channel-adapters" title="Link to this heading">¶</a></h2>
+<p>AgentScope provides ready-to-use Channel adapters for popular messaging platforms as extension modules:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#../../../integration/channel/dingtalk.md"><span class="xref myst">DingTalk</span></a> — Stream protocol (persistent WebSocket)</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/feishu.md"><span class="xref myst">Feishu / Lark</span></a> — Event subscription callback</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/github.md"><span class="xref myst">GitHub</span></a> — Issue / PR comment webhook</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/gitlab.md"><span class="xref myst">GitLab</span></a> — Note hook</p></li>
+<li><p><a class="reference internal" href="#../../../integration/channel/wecom.md"><span class="xref myst">WeCom</span></a> — Encrypted callback</p></li>
+</ul>
+<p>See the <a class="reference internal" href="#../../../integration/channel/index.md"><span class="xref myst">Channel Adapters</span></a> integration overview for details.</p>
+</section>
 <section id="related-pages">
 <h2>Related pages<a class="headerlink" href="#related-pages" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="architecture.html"><span class="doc std std-doc">Architecture</span></a> — how Context, Session, and workspace cooperate inside one call</p></li>
-<li><p><a class="reference internal" href="memory.html"><span class="doc std std-doc">Memory</span></a> — long-term memory, full compaction configuration, large tool-result offloading, background maintenance</p></li>
-<li><p><a class="reference internal" href="plan-mode.html"><span class="doc std std-doc">Plan Mode</span></a> — independent persistence and recovery of plan state</p></li>
-<li><p><a class="reference internal" href="subagent.html"><span class="doc std std-doc">Subagent</span></a> — where background tasks live and how they survive node migration</p></li>
-<li><p><a class="reference internal" href="filesystem.html"><span class="doc std std-doc">Filesystem</span></a> — <code class="docutils literal notranslate"><span class="pre">userId</span></code>-based multi-tenant path isolation</p></li>
-<li><p><a class="reference internal" href="../building-blocks/permission-system.html"><span class="std std-doc">Permissions</span></a> — persistence of permission rules</p></li>
+<li><p><a class="reference internal" href="subagent.html"><span class="doc std std-doc">Subagent</span></a> — declaring and spawning subagents, background tasks, streaming forwarding</p></li>
+<li><p><a class="reference internal" href="architecture.html"><span class="doc std std-doc">Architecture</span></a> — how parent and child agents cooperate</p></li>
 </ul>
 </section>
 </section>
@@ -1295,23 +1224,23 @@ process exits / interrupt ─► shutdownManager fires
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="workspace.html">
+          <a class="next-page" href="../change-log.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Workspace</div>
+                <div class="title">V1 Migration Guide</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="architecture.html">
+          <a class="prev-page" href="plan-mode.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Harness Architecture</div>
+                <div class="title">Plan Mode</div>
                 
               </div>
             </a>
@@ -1324,7 +1253,7 @@ process exits / interrupt ─► shutdownManager fires
             Made with 
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-06-02</div>
+              Last updated on 2026-06-15</div>
           </div>
           <div class="right-details">
             <div class="icons">
@@ -1359,28 +1288,29 @@ process exits / interrupt ─► shutdownManager fires
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Context &amp; Session</a><ul>
-<li><a class="reference internal" href="#part-1-session-persistence-of-agent-runtime-state">Part 1: Session — persistence of agent runtime state</a><ul>
-<li><a class="reference internal" href="#what-session-stores-agentstate">What Session stores —— <code class="docutils literal notranslate"><span class="pre">AgentState</span></code></a></li>
-<li><a class="reference internal" href="#the-auto-persistence-and-recovery-flow">The auto-persistence and recovery flow</a></li>
-<li><a class="reference internal" href="#built-in-and-extension-implementations">Built-in and extension implementations</a></li>
-<li><a class="reference internal" href="#real-time-resume-across-processes-and-machines">Real-time resume across processes and machines</a></li>
-<li><a class="reference internal" href="#multi-user-isolation">Multi-user isolation</a></li>
-<li><a class="reference internal" href="#reading-and-writing-agentstate-directly">Reading and writing <code class="docutils literal notranslate"><span class="pre">AgentState</span></code> directly</a></li>
-<li><a class="reference internal" href="#letting-the-agent-inspect-its-own-history">Letting the agent inspect its own history</a></li>
+<li><a class="reference internal" href="#">Channel</a><ul>
+<li><a class="reference internal" href="#what-they-do">What they do</a></li>
+<li><a class="reference internal" href="#quick-start">Quick start</a><ul>
+<li><a class="reference internal" href="#sendoptions">SendOptions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#part-2-context-compaction-strategies">Part 2: Context compaction strategies</a><ul>
-<li><a class="reference internal" href="#what-harnessagent-ships">What <code class="docutils literal notranslate"><span class="pre">HarnessAgent</span></code> ships</a></li>
-<li><a class="reference internal" href="#conversation-summarization-compactionmiddleware">1. Conversation summarization (<code class="docutils literal notranslate"><span class="pre">CompactionMiddleware</span></code>)</a></li>
-<li><a class="reference internal" href="#large-tool-result-eviction-toolresultevictionmiddleware">2. Large tool-result eviction (<code class="docutils literal notranslate"><span class="pre">ToolResultEvictionMiddleware</span></code>)</a></li>
-<li><a class="reference internal" href="#overflow-safety-net">3. Overflow safety net</a></li>
-<li><a class="reference internal" href="#pre-summary-argument-truncation-optional">4. Pre-summary argument truncation (optional)</a></li>
-<li><a class="reference internal" href="#coordination-with-memory">Coordination with Memory</a></li>
-<li><a class="reference internal" href="#what-compaction-does-not-touch">What compaction does <em>not</em> touch</a></li>
+<li><a class="reference internal" href="#streaming-events-sse">Streaming events + SSE</a><ul>
+<li><a class="reference internal" href="#spring-boot-sse-controller">Spring Boot SSE controller</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#appendix-runtimecontext-per-call-metadata">Appendix: <code class="docutils literal notranslate"><span class="pre">RuntimeContext</span></code> — per-call metadata</a></li>
+<li><a class="reference internal" href="#talking-to-exposed-subagents">Talking to exposed subagents</a><ul>
+<li><a class="reference internal" href="#discovering-exposed-subagents">Discovering exposed subagents</a></li>
+<li><a class="reference internal" href="#sending-messages-to-subagents">Sending messages to subagents</a></li>
+<li><a class="reference internal" href="#sse-with-subagent-support">SSE with subagent support</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multi-agent-routing">Multi-agent routing</a><ul>
+<li><a class="reference internal" href="#routing-by-agentid">Routing by agentId</a></li>
+<li><a class="reference internal" href="#thread-exposure-with-gatewaybootstrap">Thread exposure with GatewayBootstrap</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#custom-channel">Custom Channel</a></li>
+<li><a class="reference internal" href="#built-in-channel-adapters">Built-in channel adapters</a></li>
 <li><a class="reference internal" href="#related-pages">Related pages</a></li>
 </ul>
 </li>
