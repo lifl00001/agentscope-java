@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta property="article:modified_time" content="2026-06-15T03:10:40+00:00" /><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="Middleware" href="middleware.html"><link rel="prev" title="Agent" href="agent.html">
+    <meta property="article:modified_time" content="2026-07-09T01:26:13+00:00" /><link rel="index" title="Index" href="../../../../genindex.html"><link rel="search" title="Search" href="../../../../search.html"><link rel="next" title="Middleware" href="middleware.html"><link rel="prev" title="Agent" href="agent.html">
         <link rel="canonical" href="https://java.agentscope.io/v2/en/docs/building-blocks/message-and-event.html">
         <link rel="prefetch" href="../../../../_static/logo.svg" as="image">
 
@@ -1103,7 +1103,7 @@
 <p>Events are the streaming counterpart of messages. While the agent runs, it emits a sequence of <code class="docutils literal notranslate"><span class="pre">AgentEvent</span></code>s (<code class="docutils literal notranslate"><span class="pre">io.agentscope.core.event</span></code>) representing incremental progress — text tokens arriving, tool calls being assembled, results streaming back. Each event is lightweight and self-contained.</p>
 <section id="event-lifecycle">
 <h3>Event lifecycle<a class="headerlink" href="#event-lifecycle" title="Link to this heading">¶</a></h3>
-<p>Every event carries <code class="docutils literal notranslate"><span class="pre">getReplyId()</span></code>, tying it to the message being assembled. Within a reply, <code class="docutils literal notranslate"><span class="pre">getBlockId()</span></code> or <code class="docutils literal notranslate"><span class="pre">getToolCallId()</span></code> identifies the content block the event belongs to. Events follow a <strong>start → delta → end</strong> pattern:</p>
+<p>Every event carries <code class="docutils literal notranslate"><span class="pre">getReplyId()</span></code>, tying it to the message being assembled. Within a reply, <code class="docutils literal notranslate"><span class="pre">getBlockId()</span></code> or <code class="docutils literal notranslate"><span class="pre">getToolCallId()</span></code> acts as a correlation key for events that belong to the same content-block lifecycle. Events follow a <strong>start → delta → end</strong> pattern:</p>
 <pre  class="mermaid">
         sequenceDiagram
     participant Client
@@ -1147,7 +1147,7 @@
     end
 
     Agent-&gt;&gt;Client: AgentEndEvent
-    </pre><p>All events in one reply share the same <code class="docutils literal notranslate"><span class="pre">replyId</span></code>. Within a reply, <code class="docutils literal notranslate"><span class="pre">blockId</span></code> ties text/thinking/data block events together; <code class="docutils literal notranslate"><span class="pre">toolCallId</span></code> ties tool calls and tool results.</p>
+    </pre><p>All events in one reply share the same <code class="docutils literal notranslate"><span class="pre">replyId</span></code>. Within a reply, <code class="docutils literal notranslate"><span class="pre">blockId</span></code> ties text/thinking/data block events together; <code class="docutils literal notranslate"><span class="pre">toolCallId</span></code> ties tool calls and tool results. A <code class="docutils literal notranslate"><span class="pre">blockId</span></code> is scoped to its <code class="docutils literal notranslate"><span class="pre">replyId</span></code> and does not have to be a globally unique generated ID. When a block type can have at most one lifecycle within a reply, an implementation may use a stable type key, such as a fixed key for the text block.</p>
 </section>
 <section id="event-types">
 <h3>Event types<a class="headerlink" href="#event-types" title="Link to this heading">¶</a></h3>
@@ -1268,7 +1268,7 @@
 </tr>
 <tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">getBlockId()</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
-<td><p class="sd-card-text">Unique text block ID</p></td>
+<td><p class="sd-card-text">Text-block correlation key within the current reply</p></td>
 </tr>
 </tbody>
 </table>
@@ -1289,7 +1289,7 @@
 </tr>
 <tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">getBlockId()</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
-<td><p class="sd-card-text">Unique text block ID</p></td>
+<td><p class="sd-card-text">Text-block correlation key within the current reply</p></td>
 </tr>
 <tr class="row-even"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">getDelta()</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
@@ -1314,7 +1314,7 @@
 </tr>
 <tr class="row-odd"><td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">getBlockId()</span></code></p></td>
 <td><p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">String</span></code></p></td>
-<td><p class="sd-card-text">Unique text block ID</p></td>
+<td><p class="sd-card-text">Text-block correlation key within the current reply</p></td>
 </tr>
 </tbody>
 </table>
@@ -1323,7 +1323,7 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Thinking streaming events</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>ThinkingBlockStartEvent / ThinkingBlockDeltaEvent / ThinkingBlockEndEvent</strong> — same shape as the text streaming events; specific to the model’s chain of thought.</p>
+<p class="sd-card-text"><strong>ThinkingBlockStartEvent / ThinkingBlockDeltaEvent / ThinkingBlockEndEvent</strong> — same shape as the text streaming events; specific to the model’s chain of thought. Its <code class="docutils literal notranslate"><span class="pre">blockId</span></code> has the same reply-scoped correlation-key semantics.</p>
 </div>
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -1609,7 +1609,7 @@ Context</div>
             Made with 
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on 2026-06-15</div>
+              Last updated on 2026-07-09</div>
           </div>
           <div class="right-details">
             <div class="icons">
@@ -1911,6 +1911,25 @@ let darkTheme = isDarkTheme();
 let modal = null;
 let modalContent = null;
 let previousScrollOffset = [window.scrollX, window.scrollY];
+let _lazyObserver = null;
+let _renderQueue = Promise.resolve();
+
+// Apply d3 zoom to each SVG. Idempotent: an SVG already wrapped is skipped,
+// so this is safe to call both for the initial batch and for diagrams that
+// render lazily once they become visible.
+const addZoomToSvgs = (svgs) => {
+    svgs.each(function() {
+        if (this.getAttribute('data-zoom-applied') === 'true') return;
+        var svg = d3.select(this);
+        svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+        var inner = svg.select("g");
+        var zoom = d3.zoom().on("zoom", function(event) {
+            inner.attr("transform", event.transform);
+        });
+        svg.call(zoom);
+        this.setAttribute('data-zoom-applied', 'true');
+    });
+};
 
 const runMermaid = async (rerun) => {
     console.log("Running mermaid diagrams, rerun =", rerun);
@@ -1918,7 +1937,15 @@ const runMermaid = async (rerun) => {
     let all_mermaids = document.querySelectorAll(".mermaid");
 
     if (rerun) {
+        // Disconnect any previous lazy rendering observer
+        if (_lazyObserver) {
+            _lazyObserver.disconnect();
+            _lazyObserver = null;
+        }
+
         all_mermaids.forEach((el) => {
+            el.removeAttribute('data-mermaid-deferred');
+            el.removeAttribute('data-mermaid-render-failed');
             if(!el.hasAttribute("data-original-code")) {
                 // store original code
                 // console.log(`Storing original code for first run: `, el.innerHTML);
@@ -1935,35 +1962,89 @@ const runMermaid = async (rerun) => {
                 el.setAttribute('data-original-code', el.innerHTML);
             }
         });
-        await mermaid.run();
+
+        // Separate visible and hidden elements. Mermaid's layout engine measures
+        // text dimensions via the DOM, which fails for elements hidden by a parent
+        // (e.g., Reveal.js non-active slides, sphinx-design unopened tabs),
+        // producing broken SVGs. Render visible elements now, defer hidden ones.
+        const visible = [];
+        const hidden = [];
+        all_mermaids.forEach((el) => {
+            // offsetParent is null for display:none ancestors.
+            // getClientRects().length > 0 catches position:fixed elements
+            // (which also have null offsetParent but are still visible).
+            if (el.offsetParent !== null || el.getClientRects().length > 0) {
+                visible.push(el);
+            } else {
+                hidden.push(el);
+                el.setAttribute('data-mermaid-deferred', 'true');
+            }
+        });
+
+        if (visible.length > 0) {
+            try {
+                await mermaid.run({ nodes: visible });
+            } catch (e) {
+                console.error("Mermaid rendering failed:", e);
+            }
+        }
+
+        // Lazily render hidden elements when they become visible.
+        // Uses a promise chain (_renderQueue) to serialize rendering,
+        // since IntersectionObserver may report multiple entries at once
+        // and mermaid.run() is not safe to call concurrently.
+        if (hidden.length > 0) {
+            if (typeof IntersectionObserver === 'undefined') {
+                console.warn("IntersectionObserver not available; hidden mermaid diagrams will not render.");
+            } else {
+                _renderQueue = Promise.resolve();
+                _lazyObserver = new IntersectionObserver((entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting && entry.target.getAttribute("data-processed") !== "true") {
+                            _lazyObserver.unobserve(entry.target);
+                            const el = entry.target;
+                            _renderQueue = _renderQueue.then(async () => {
+                                try {
+                                    await mermaid.run({ nodes: [el] });
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    // Apply zoom to the now-rendered diagram, matching
+                                    // the decoration visible diagrams receive.
+                                    if ("False" === "True") {
+                                        addZoomToSvgs(d3.selectAll(""));
+                                    }
+                                } catch (e) {
+                                    console.error("Mermaid deferred rendering failed:", e);
+                                    el.removeAttribute('data-mermaid-deferred');
+                                    el.setAttribute('data-mermaid-render-failed', 'true');
+                                }
+                            });
+                        }
+                    }
+                });
+                hidden.forEach((el) => _lazyObserver.observe(el));
+            }
+        }
     }
 
     all_mermaids = document.querySelectorAll(".mermaid");
-    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+    // Exclude deferred (hidden) and render-failed elements from completion checks
+    const mermaids_active = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])");
+    const mermaids_processed = document.querySelectorAll(".mermaid:not([data-mermaid-deferred]):not([data-mermaid-render-failed])[data-processed='true']");
 
     if ("False" === "True") {
-        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        const mermaids_to_add_zoom = -1 === -1 ? mermaids_active.length : -1;
         if(mermaids_to_add_zoom > 0) {
             var svgs = d3.selectAll("");
-            if(all_mermaids.length !== mermaids_processed.length) {
+            // Wait until every active (visible) diagram has rendered. Deferred
+            // diagrams are excluded, so a fixed d3_node_count that counts a
+            // hidden diagram no longer loops forever waiting for its SVG.
+            if(mermaids_active.length !== mermaids_processed.length) {
                 setTimeout(() => runMermaid(false), 200);
                 return;
-            } else if(svgs.size() !== mermaids_to_add_zoom) {
-                setTimeout(() => runMermaid(false), 200);
-                return;
-            } else {
-                svgs.each(function() {
-                    var svg = d3.select(this);
-                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
-                    var inner = svg.select("g");
-                    var zoom = d3.zoom().on("zoom", function(event) {
-                        inner.attr("transform", event.transform);
-                    });
-                    svg.call(zoom);
-                });
             }
+            addZoomToSvgs(svgs);
         }
-    } else if(all_mermaids.length !== mermaids_processed.length) {
+    } else if(mermaids_active.length !== mermaids_processed.length) {
         // Wait for mermaid to process all diagrams
         setTimeout(() => runMermaid(false), 200);
         return;
